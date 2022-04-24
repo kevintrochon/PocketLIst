@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailsProduitActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="Edition de produit"/>
+
+    <EditText
+        android:id="@+id/title2"
+        style="@style/NoteTitleFont"
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom du produit" />
+
+    <EditText
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="429dp"
+        android:layout_below="@+id/title2"
+        android:layout_marginTop="2dp"
+        android:hint="Description du produit" />
+
+    <EditText
+        android:id="@+id/edit_produit"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_below="@+id/title2"
+        android:layout_marginTop="2dp"
+        android:hint="Catégorie du produit" />
+</RelativeLayout>
