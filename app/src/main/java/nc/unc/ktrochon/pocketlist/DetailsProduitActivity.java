@@ -3,7 +3,10 @@ package nc.unc.ktrochon.pocketlist;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
 
 import nc.unc.ktrochon.pocketlist.entity.Produit;
 
@@ -18,7 +21,8 @@ public class DetailsProduitActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_produit);
-        /*produit = getIntent().getParcelableExtra("produits");
+        Gson gson = new Gson();
+        produit = gson.fromJson(getIntent().getStringExtra("produits"), Produit.class);
         produitIndex = getIntent().getIntExtra("produitIndex",1);
 
         nomProduitView = findViewById(R.id.title2);
@@ -27,7 +31,7 @@ public class DetailsProduitActivity extends AppCompatActivity {
 
         nomProduitView.setText(produit.getNomProduit());
         descriptionView.setText(produit.getDescription());
-        categoryView.setText(produit.getCategory().getCategoryName());*/
+        categoryView.setText(produit.getCategory().getCategoryName());
 
     }
 

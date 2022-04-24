@@ -1,6 +1,8 @@
 package nc.unc.ktrochon.pocketlist.entity;
 
-public class Produit {
+import java.io.Serializable;
+
+public class Produit implements Serializable {
 
     private String nomProduit;
     private String description;
