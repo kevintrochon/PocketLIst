@@ -62,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Liste 1"
-                    android:onClick="onClickButtonList"/>
+                    android:onClick="onClickButtonList" />
 
                 <Button
                     android:id="@+id/button10"

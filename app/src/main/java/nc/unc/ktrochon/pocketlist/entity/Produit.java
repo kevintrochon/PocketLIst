@@ -20,6 +20,13 @@ public class Produit implements Serializable {
         this.category = category;
     }
 
+    public Produit(String nomProduit, String description, int id, CategoryProduit category) {
+        this.nomProduit = nomProduit;
+        this.description = description;
+        this.id = id;
+        this.category = category;
+    }
+
     public String getNomProduit() {
         return nomProduit;
     }
