@@ -34,4 +34,9 @@ public class ProduitServices {
         repository.deleteProduit(produit);
     }
 
+    public void miseAJourNomProduit(Context context, Produit produit,String nomProduit){
+        repository = new ProduitRepository(context);
+        repository.updateNomProduit(produit,nomProduit);
+    }
+
 }

@@ -74,4 +74,14 @@ public class ProduitRepository {
         connexion.getWritableDatabase().execSQL(query);
         Log.i("addProduit","Produit supprimer");
     }
+
+    public void updateNomProduit(Produit produit,String nom) {
+        String query = "UPDATE produit SET nom ='"
+                + nom
+                +"' WHERE nom = '"
+                + produit.getNomProduit()
+                +"'";
+        connexion.getWritableDatabase().execSQL(query);
+        Log.i("addProduit","Produit supprimer");
+    }
 }

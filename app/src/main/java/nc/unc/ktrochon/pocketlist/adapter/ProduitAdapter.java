@@ -4,15 +4,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
 import nc.unc.ktrochon.pocketlist.ListProduitActivity;
-import nc.unc.ktrochon.pocketlist.MainActivity;
 import nc.unc.ktrochon.pocketlist.R;
-import nc.unc.ktrochon.pocketlist.entity.ListProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
 
 public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHolder> {
@@ -25,12 +25,12 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
         this.itemClickListener = itemClickListener;
     }
 
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_produit,parent,false);
-        ProduitAdapter.ViewHolder viewHolder = new ProduitAdapter.ViewHolder(itemView);
-        return viewHolder;
+        return new ViewHolder(itemView);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
         holder.cardView.setOnClickListener(itemClickListener);
         holder.cardView.setTag(position);
         holder.titleView.setText(produit.getNomProduit());
-        //holder.categoryView.setText(produit.getCategory().getCategoryName());
+        holder.categoryView.setText(produit.getCategory().getCategoryName());
         holder.excerptView.setText(produit.getDescription());
     }
 
