@@ -3,6 +3,7 @@ package nc.unc.ktrochon.pocketlist.repository;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,5 +53,25 @@ public class ProduitRepository {
             cursor.moveToNext();
         }
         return list;
+    }
+
+    public void addProduit(Produit produit) {
+
+        String query = "INSERT INTO PRODUIT (Nom,Description) VALUES ('"
+                + produit.getNomProduit().replace("'","''")
+                +"','"
+                + produit.getDescription().replace("'","''")+
+                "')";
+
+        connexion.getWritableDatabase().execSQL(query);
+        Log.i("addProduit","Produit ajouter");
+    }
+
+    public void deleteProduit(Produit produit){
+        String query = "DELETE FROM produit WHERE nom = '"
+                + produit.getNomProduit()
+                +"'";
+        connexion.getWritableDatabase().execSQL(query);
+        Log.i("addProduit","Produit supprimer");
     }
 }

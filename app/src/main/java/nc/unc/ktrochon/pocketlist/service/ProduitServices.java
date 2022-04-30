@@ -24,4 +24,14 @@ public class ProduitServices {
         return produits;
     }
 
+    public void setProduit(Context context ,Produit produit){
+        repository = new ProduitRepository(context);
+        repository.addProduit(produit);
+    }
+
+    public void deleteProduit(Context context, Produit produit){
+        repository = new ProduitRepository(context);
+        repository.deleteProduit(produit);
+    }
+
 }

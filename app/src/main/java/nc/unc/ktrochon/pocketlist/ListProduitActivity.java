@@ -33,6 +33,7 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         //produits.add(new Produit("Carrotte","Ceci est un légume de couleur orange, la partie commestible de la plante est la racine.",1,new CategoryProduit("Legume")));
         //produits.add(new Produit("Salade","Ceci est un légume de couleur verte, la partie commestible de la plante sont ses feuilles.",2,new CategoryProduit("Legume")));
         ProduitServices produitServices = new ProduitServices();
+        //produitServices.setProduit(this,new Produit("Chocolate","Ceci est bon pour le morale",new CategoryProduit("Desert")));
         produits = produitServices.getAllProduit(this);
         adapter = new ProduitAdapter(produits, this);
 
