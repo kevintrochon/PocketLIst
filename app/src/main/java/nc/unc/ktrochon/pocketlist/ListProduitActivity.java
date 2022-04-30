@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.google.gson.Gson;
@@ -54,5 +53,15 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         intent.putExtra("produits",myJSON);
         intent.putExtra("produitIndex",produitIndex);
         startActivity(intent);
+    }
+
+    public void ajouterProduit(View view){
+        produits.add(new Produit("Pomme de terre","Ceci est un féculant, la partie commestible de la plante est la racine.", 4, new CategoryProduit("Feculant")));
+
+        adapter = new ProduitAdapter(produits, this);
+
+        RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        recyclerView.setAdapter(adapter);
     }
 }

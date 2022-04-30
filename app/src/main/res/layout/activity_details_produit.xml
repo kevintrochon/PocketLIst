@@ -35,5 +35,23 @@
         android:layout_height="90dp"
         android:layout_below="@+id/title2"
         android:layout_marginTop="2dp"
-        android:hint="Catégorie du produit" />
+        android:hint="Catégorie du produit"/>
+    <Button
+        android:id="@+id/sauvegarder_produit"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text2"
+        android:layout_marginTop="9dp"
+        android:text="Sauvegarder"
+        android:onClick="sauvegarderProduit"/>
+
+    <Button
+        android:id="@+id/button_delete_produit"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text2"
+        android:layout_alignRight="@+id/text2"
+        android:layout_marginTop="9dp"
+        android:text="Supprimer" />
+
 </RelativeLayout>

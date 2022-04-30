@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ListProduitDetailsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:title="Edition de la liste"/>
+
+    <EditText
+        android:id="@+id/nameList"
+        style="@style/NoteTitleFont"
+        android:layout_width="match_parent"
+        android:layout_height="334dp"
+        android:layout_below="@+id/toolbar"
+        android:hint="Nom de liste"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/sauvegarder"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameList"
+        android:layout_marginTop="9dp"
+        android:text="Sauvegarder"
+        android:onClick="sauvegarderListe"/>
+
+    <Button
+        android:id="@+id/button_delete"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameList"
+        android:layout_alignRight="@+id/nameList"
+        android:layout_marginTop="9dp"
+        android:text="Supprimer"
+        android:onClick="supprimerListe"/>
+
+</RelativeLayout>

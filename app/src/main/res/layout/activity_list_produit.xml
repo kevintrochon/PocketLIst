@@ -14,8 +14,16 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/notes_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="502dp"
         android:layout_below="@+id/toolbar"
         tools:listitem="@layout/item_produit" />
+
+    <Button
+        android:id="@+id/button_ajouter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ajouter une liste"
+        android:layout_below="@+id/notes_recycler_view"
+        android:onClick="ajouterProduit"/>
 
 </RelativeLayout>

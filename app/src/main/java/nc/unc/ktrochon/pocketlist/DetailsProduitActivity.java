@@ -2,8 +2,11 @@ package nc.unc.ktrochon.pocketlist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -16,6 +19,7 @@ public class DetailsProduitActivity extends AppCompatActivity {
     TextView nomProduitView;
     TextView descriptionView;
     TextView categoryView;
+    EditText editText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +39,11 @@ public class DetailsProduitActivity extends AppCompatActivity {
 
     }
 
-    public class companion {
-        String EXTRA_NOTE = "note";
-        String EXTRA_NOTE_INDEX = "noteIndex";
+    public void sauvegarderProduit(View view){
+        editText = findViewById(R.id.title2);
+        nomProduitView.setText(editText.getText());
+        Intent intent = new Intent(this, ListProduitActivity.class);
+        startActivity(intent);
+        Log.i("Sauvegarde",editText.getText().toString());
     }
 }

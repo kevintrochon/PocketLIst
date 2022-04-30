@@ -9,21 +9,79 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ScrollView;
+import android.widget.CheckBox;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+import nc.unc.ktrochon.pocketlist.adapter.ListProduitAdpter;
+import nc.unc.ktrochon.pocketlist.entity.ListProduit;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    ListProduitAdpter adapter;
+    List<ListProduit> maListeProduit;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //TO DO : remplacer par la lecture de la base de données, table listeCourse.
+        ListProduit listProduit = new ListProduit("Ma liste de course");
+        maListeProduit= new ArrayList<>();
+        maListeProduit.add(listProduit);
+        adapter = new ListProduitAdpter(maListeProduit,this);
+        RecyclerView recyclerView = findViewById(R.id.liste_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        recyclerView.setAdapter(adapter);
     }
 
-    public void onClickButtonList(View view){
+    public void ajouterListe(View view){
+        ListProduit listProduit = new ListProduit("Ma liste de vetements");
+        maListeProduit.add(listProduit);
+        adapter = new ListProduitAdpter(maListeProduit,this);
+        RecyclerView recyclerView = findViewById(R.id.liste_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getTag() != null && !hasChecked(view)) {
+            showProduitDetail((int) view.getTag());
+        }
+        else {
+            showListDetail((int) view.getTag());
+        }
+    }
+
+    public boolean hasChecked(View view){
+        boolean check = false;
+        CheckBox checkBox = (CheckBox)view.findViewById(R.id.check_delete);
+        if (checkBox.isChecked()){
+            check = true;
+        }
+        return check;
+    }
+
+    public void showProduitDetail(int maListeIndex){
+        ListProduit listProduit = maListeProduit.get(maListeIndex);
         Intent intent = new Intent(this, ListProduitActivity.class);
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.putExtra("idList",1);
+        Gson json = new Gson();
+        String myJSON = json.toJson(listProduit);
+        intent.putExtra("listProduits",myJSON);
+        intent.putExtra("listProduitIndex",maListeIndex);
         startActivity(intent);
-        Log.i("MainActivity","Vous avez choisi une liste");
+    }
+
+    public void showListDetail(int position){
+        ListProduit listProduit = maListeProduit.get(position);
+        Intent intent = new Intent(this, ListProduitDetailsActivity.class);
+        Gson json = new Gson();
+        String myJSON = json.toJson(listProduit);
+        intent.putExtra("liste",myJSON);
+        intent.putExtra("listeIndex",position);
+        startActivity(intent);
     }
 }

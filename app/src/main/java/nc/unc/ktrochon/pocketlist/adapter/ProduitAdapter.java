@@ -9,7 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import nc.unc.ktrochon.pocketlist.ListProduitActivity;
+import nc.unc.ktrochon.pocketlist.MainActivity;
 import nc.unc.ktrochon.pocketlist.R;
+import nc.unc.ktrochon.pocketlist.entity.ListProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
 
 public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHolder> {
@@ -17,7 +20,7 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
     List<Produit> produits;
     View.OnClickListener itemClickListener;
 
-    public ProduitAdapter(List<Produit> produits, View.OnClickListener itemClickListener) {
+    public ProduitAdapter(List<Produit> produits, ListProduitActivity itemClickListener) {
         this.produits = produits;
         this.itemClickListener = itemClickListener;
     }
