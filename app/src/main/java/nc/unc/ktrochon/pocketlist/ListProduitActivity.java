@@ -16,6 +16,7 @@ import java.util.List;
 import nc.unc.ktrochon.pocketlist.adapter.ProduitAdapter;
 import nc.unc.ktrochon.pocketlist.entity.CategoryProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
+import nc.unc.ktrochon.pocketlist.service.ProduitServices;
 
 public class ListProduitActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,9 +30,10 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
 
         //A remplacer par une méthode de récupération en base de données.
         produits = new ArrayList<>();
-        produits.add(new Produit("Carrotte","Ceci est un légume de couleur orange, la partie commestible de la plante est la racine.",1,new CategoryProduit("Legume")));
-        produits.add(new Produit("Salade","Ceci est un légume de couleur verte, la partie commestible de la plante sont ses feuilles.",2,new CategoryProduit("Legume")));
-
+        //produits.add(new Produit("Carrotte","Ceci est un légume de couleur orange, la partie commestible de la plante est la racine.",1,new CategoryProduit("Legume")));
+        //produits.add(new Produit("Salade","Ceci est un légume de couleur verte, la partie commestible de la plante sont ses feuilles.",2,new CategoryProduit("Legume")));
+        ProduitServices produitServices = new ProduitServices();
+        produits = produitServices.getAllProduit(this);
         adapter = new ProduitAdapter(produits, this);
 
         RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);

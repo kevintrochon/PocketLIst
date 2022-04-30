@@ -9,6 +9,9 @@ public class Produit implements Serializable {
     private int id;
     private CategoryProduit category;
 
+    public Produit() {
+    }
+
     public Produit(String nomProduit, String description) {
         this.nomProduit = nomProduit;
         this.description = description;
