@@ -7,6 +7,9 @@ public class ListProduit implements Serializable {
     private List<Produit> produits;
     private String name;
 
+    public ListProduit() {
+    }
+
     public ListProduit(String name) {
         this.name = name;
     }
