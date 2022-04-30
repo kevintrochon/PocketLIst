@@ -22,7 +22,7 @@
         android:id="@+id/button_ajouter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ajouter une liste"
+        android:text="Ajouter un produit"
         android:layout_below="@+id/notes_recycler_view"
         android:onClick="ajouterProduit"/>
 
