@@ -3,10 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_details_produit.xml" value="0.1453125" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_list_produit.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_list_produit_details.xml" value="0.1453125" />
-        <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_produit_form.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/item_list_produit.xml" value="0.1453125" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/item_produit.xml" value="0.25416666666666665" />

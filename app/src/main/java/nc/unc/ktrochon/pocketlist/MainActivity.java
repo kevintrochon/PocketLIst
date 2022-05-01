@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import nc.unc.ktrochon.pocketlist.adapter.ListProduitAdpter;
 import nc.unc.ktrochon.pocketlist.entity.ListProduit;
+import nc.unc.ktrochon.pocketlist.service.ListServices;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,9 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //TO DO : remplacer par la lecture de la base de données, table listeCourse.
-        ListProduit listProduit = new ListProduit("Ma liste de course");
-        maListeProduit= new ArrayList<>();
-        maListeProduit.add(listProduit);
+        FloatingActionButton button = findViewById(R.id.create_list_fab);
+        button.setOnClickListener(this);
+        button.show();
+        ListServices services = new ListServices();
+        maListeProduit= services.getAllList(this);
         adapter = new ListProduitAdpter(maListeProduit,this);
         RecyclerView recyclerView = findViewById(R.id.liste_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
@@ -50,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if (view.getTag() != null && !hasChecked(view)) {
             showProduitDetail((int) view.getTag());
+        }
+        else if (view.getId() == R.id.create_list_fab){
+            ajouterListe(view);
         }
         else {
             showListDetail((int) view.getTag());

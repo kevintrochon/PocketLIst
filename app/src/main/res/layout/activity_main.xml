@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="700dp"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
+        android:layout_height="700dp"
+        >
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/liste_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="502dp"
-        android:layout_below="@+id/toolbar"
-        tools:listitem="@layout/item_list_produit" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary" />
 
-    <Button
-        android:id="@+id/button_ajouter"
-        android:layout_width="match_parent"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/liste_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            tools:listitem="@layout/item_list_produit" />
+    </RelativeLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/create_list_fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ajouter une liste"
-        android:layout_below="@+id/liste_recycler_view"
-        android:onClick="ajouterListe"/>
+        android:layout_gravity="bottom|right"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="17dp"
+        android:visibility="visible"
+        android:src="@drawable/ic_add_white_24dp"/>
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

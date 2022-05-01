@@ -19,9 +19,6 @@
             android:name=".ListProduitActivity"
             android:exported="false" />
         <activity
-            android:name=".ProduitForm"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
