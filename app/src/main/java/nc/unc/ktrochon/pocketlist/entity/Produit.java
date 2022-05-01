@@ -7,7 +7,7 @@ public class Produit implements Serializable {
     private String nomProduit;
     private String description;
     private int id;
-    private CategoryProduit category;
+    private int category;
 
     public Produit() {
     }
@@ -17,13 +17,13 @@ public class Produit implements Serializable {
         this.description = description;
     }
 
-    public Produit(String nomProduit, String description, CategoryProduit category) {
+    public Produit(String nomProduit, String description, int category) {
         this.nomProduit = nomProduit;
         this.description = description;
         this.category = category;
     }
 
-    public Produit(String nomProduit, String description, int id, CategoryProduit category) {
+    public Produit(String nomProduit, String description, int id, int category) {
         this.nomProduit = nomProduit;
         this.description = description;
         this.id = id;
@@ -54,11 +54,11 @@ public class Produit implements Serializable {
         this.id = id;
     }
 
-    public CategoryProduit getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(CategoryProduit category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 }

@@ -22,18 +22,13 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
 
     List<Produit> produits;
     ProduitAdapter adapter;
+    private ProduitServices services = new ProduitServices();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_produit);
-
-        //A remplacer par une méthode de récupération en base de données.
-        produits = new ArrayList<>();
-        //produits.add(new Produit("Carrotte","Ceci est un légume de couleur orange, la partie commestible de la plante est la racine.",1,new CategoryProduit("Legume")));
-        //produits.add(new Produit("Salade","Ceci est un légume de couleur verte, la partie commestible de la plante sont ses feuilles.",2,new CategoryProduit("Legume")));
-        ProduitServices produitServices = new ProduitServices();
-        produits = produitServices.getAllProduit(this);
+        produits = services.getAllProduit(this);
         adapter = new ProduitAdapter(produits, this);
 
         RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);
@@ -58,12 +53,12 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void ajouterProduit(View view){
-        produits.add(new Produit("Pomme de terre","Ceci est un féculant, la partie commestible de la plante est la racine.", 4, new CategoryProduit("Feculant")));
-
-        adapter = new ProduitAdapter(produits, this);
-
-        RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(adapter);
+        Produit p = new Produit();
+        Intent intent = new Intent(this, DetailsProduitActivity.class);
+        Gson json = new Gson();
+        String myJSON = json.toJson(p);
+        intent.putExtra("produits",myJSON);
+        intent.putExtra("produitIndex",-1);
+        startActivity(intent);
     }
 }

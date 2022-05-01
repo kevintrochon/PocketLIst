@@ -43,6 +43,7 @@ public class ListProduitDetailsActivity extends AppCompatActivity {
         else {
             services.miseAJourListProduit(this,maListe,editText.getText().toString());
         }
+
     }
 
     public void supprimerListe(View view){

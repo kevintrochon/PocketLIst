@@ -2,6 +2,7 @@ package nc.unc.ktrochon.pocketlist.repository;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.util.Log;
 
@@ -34,7 +35,8 @@ public class ProduitRepository {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
            p.setNomProduit(cursor.getString(cursor.getColumnIndex("nom")));
-           p.setDescription(cursor.getString(cursor.getColumnIndex("nom")));
+           p.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+           p.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat"))));
             cursor.moveToNext();
         }
         return p;
@@ -48,7 +50,8 @@ public class ProduitRepository {
         while (!cursor.isAfterLast()) {
             Produit p = new Produit();
             p.setNomProduit(cursor.getString(cursor.getColumnIndex("nom")));
-            p.setDescription(cursor.getString(cursor.getColumnIndex("nom")));
+            p.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+            p.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat"))));
             list.add(p);
             cursor.moveToNext();
         }
@@ -57,11 +60,13 @@ public class ProduitRepository {
 
     public void addProduit(Produit produit) {
 
-        String query = "INSERT INTO PRODUIT (Nom,Description) VALUES ('"
+        String query = "INSERT INTO PRODUIT (Nom,Description,key_cat) VALUES ('"
                 + produit.getNomProduit().replace("'","''")
                 +"','"
-                + produit.getDescription().replace("'","''")+
-                "')";
+                + produit.getDescription().replace("'","''")
+                + "',"
+                +produit.getCategory()
+                + ")";
 
         connexion.getWritableDatabase().execSQL(query);
         Log.i("addProduit","Produit ajouter");
@@ -84,4 +89,5 @@ public class ProduitRepository {
         connexion.getWritableDatabase().execSQL(query);
         Log.i("addProduit","Produit supprimer");
     }
+
 }
