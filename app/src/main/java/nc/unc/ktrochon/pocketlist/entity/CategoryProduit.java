@@ -1,15 +1,12 @@
 package nc.unc.ktrochon.pocketlist.entity;
 
+
 public class CategoryProduit {
+
     int categoryId = 0;
     String categoryName;
 
     public CategoryProduit() {
-    }
-
-    public CategoryProduit(String categoryName) {
-        this.categoryName = categoryName;
-        this.categoryId++;
     }
 
     public int getCategoryId() {

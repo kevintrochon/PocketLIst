@@ -26,6 +26,8 @@ public class ListRepository {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             listProduit.setName(cursor.getString(cursor.getColumnIndex("nom")));
+            listProduit.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_liste"))));
+            listProduit.setKey_prod(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_prod"))));
             cursor.moveToNext();
         }
         return listProduit;
@@ -39,6 +41,8 @@ public class ListRepository {
         while (!cursor.isAfterLast()) {
             ListProduit listProduit = new ListProduit();
             listProduit.setName(cursor.getString(cursor.getColumnIndex("nom")));
+            listProduit.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_liste"))));
+            listProduit.setKey_prod(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_prod"))));
             list.add(listProduit);
             cursor.moveToNext();
         }
@@ -46,15 +50,13 @@ public class ListRepository {
     }
 
     public void addListe(ListProduit listProduit) {
-
         String query = "INSERT INTO liste (Nom,key_prod) VALUES ('"
                 + listProduit.getName().replace("'","''")
-                +"','"
-                + listProduit.getProduits().get(0).getId()+
-                "')";
+                +"',"
+                + listProduit.getId()+
+                ")";
 
         connexion.getWritableDatabase().execSQL(query);
-        Log.i("addProduit","Liste de produit ajouter");
     }
 
     public void deleteListe(ListProduit listProduit){
@@ -62,7 +64,6 @@ public class ListRepository {
                 + listProduit.getName()
                 +"'";
         connexion.getWritableDatabase().execSQL(query);
-        Log.i("addListProduit","Liste de produit supprimer");
     }
 
     public void updateTitleList(ListProduit listProduit,String nom) {
@@ -72,6 +73,8 @@ public class ListRepository {
                 + listProduit.getName()
                 +"'";
         connexion.getWritableDatabase().execSQL(query);
-        Log.i("addListProduit","Liste de produit mise à jour");
     }
+
+
+
 }

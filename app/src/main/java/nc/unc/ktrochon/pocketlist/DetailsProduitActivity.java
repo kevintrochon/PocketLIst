@@ -35,11 +35,11 @@ public class DetailsProduitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details_produit);
         Gson gson = new Gson();
         produit = gson.fromJson(getIntent().getStringExtra("produits"), Produit.class);
-        produitIndex = getIntent().getIntExtra("produitIndex",1);
+        produitIndex = getIntent().getIntExtra("produitIndex",-1);
         nomProduitView = findViewById(R.id.title2);
         descriptionView = findViewById(R.id.text2);
         categoryView = findViewById(R.id.edit_produit);
-        categoryProduit = services.getCategoryProduitByName(this,category.getText().toString());
+        categoryProduit = services.getCategoryProduitByName(this,categoryView.getText().toString());
         nomProduitView.setText(produit.getNomProduit());
         descriptionView.setText(produit.getDescription());
         categoryView.setText(categoryProduit.getCategoryName());

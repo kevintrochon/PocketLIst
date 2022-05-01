@@ -1,10 +1,10 @@
 package nc.unc.ktrochon.pocketlist.entity;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class ListProduit implements Serializable {
-    private List<Produit> produits;
+    private int id;
+    private int key_prod;
     private String name;
 
     public ListProduit() {
@@ -14,17 +14,20 @@ public class ListProduit implements Serializable {
         this.name = name;
     }
 
-    public ListProduit(List<Produit> produits, String name) {
-        this.produits = produits;
-        this.name = name;
+    public int getId() {
+        return id;
     }
 
-    public List<Produit> getProduits() {
-        return produits;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setProduits(List<Produit> produits) {
-        this.produits = produits;
+    public int getKey_prod() {
+        return key_prod;
+    }
+
+    public void setKey_prod(int key_prod) {
+        this.key_prod = key_prod;
     }
 
     public String getName() {

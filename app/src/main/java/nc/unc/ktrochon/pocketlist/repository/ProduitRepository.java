@@ -36,7 +36,7 @@ public class ProduitRepository {
         while (!cursor.isAfterLast()) {
            p.setNomProduit(cursor.getString(cursor.getColumnIndex("nom")));
            p.setDescription(cursor.getString(cursor.getColumnIndex("description")));
-           p.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat"))));
+           //p.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat"))));
             cursor.moveToNext();
         }
         return p;
@@ -51,7 +51,8 @@ public class ProduitRepository {
             Produit p = new Produit();
             p.setNomProduit(cursor.getString(cursor.getColumnIndex("nom")));
             p.setDescription(cursor.getString(cursor.getColumnIndex("description")));
-            p.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat"))));
+            /*Integer id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat")));
+            p.setId(id);*/
             list.add(p);
             cursor.moveToNext();
         }

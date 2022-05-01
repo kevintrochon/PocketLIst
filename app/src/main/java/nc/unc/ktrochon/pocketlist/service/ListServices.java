@@ -25,9 +25,9 @@ public class ListServices {
         return lists;
     }
 
-    public void setList(Context context , ListProduit ListProduit){
+    public void setList(Context context , ListProduit newListProduit){
         repository = new ListRepository(context);
-        repository.addListe(listProduit);
+        repository.addListe(newListProduit);
     }
 
     public void deleteList(Context context, ListProduit ListProduit){
