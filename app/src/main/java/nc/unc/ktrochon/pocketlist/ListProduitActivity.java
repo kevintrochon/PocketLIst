@@ -15,6 +15,7 @@ import java.util.List;
 
 import nc.unc.ktrochon.pocketlist.adapter.ProduitAdapter;
 import nc.unc.ktrochon.pocketlist.entity.CategoryProduit;
+import nc.unc.ktrochon.pocketlist.entity.ListProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
 import nc.unc.ktrochon.pocketlist.service.ProduitServices;
 
@@ -24,11 +25,14 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
     ProduitAdapter adapter;
     private ProduitServices services = new ProduitServices();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_produit);
-        produits = services.getAllProduit(this);
+        Gson gson = new Gson();
+        ListProduit listProduit = gson.fromJson(getIntent().getStringExtra("listProduits"), ListProduit.class);
+        produits = services.getAllProduit(this,listProduit.getId());
         adapter = new ProduitAdapter(produits, this);
 
         RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);

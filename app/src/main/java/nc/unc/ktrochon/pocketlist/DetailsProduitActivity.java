@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -57,7 +56,7 @@ public class DetailsProduitActivity extends AppCompatActivity {
         produit.setCategory(categoryProduit.getCategoryId());
         Produit p = produitServices.getProduitByName(this,produit.getNomProduit());
         if (p.getNomProduit() == null){
-            produitServices.setProduit(this,produit);
+            produitServices.addProduit(this,produit);
         }else{
             produitServices.miseAJourNomProduit(this,produit,title.getText().toString());
         }

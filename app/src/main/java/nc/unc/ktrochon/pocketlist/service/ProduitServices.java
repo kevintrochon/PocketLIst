@@ -18,13 +18,13 @@ public class ProduitServices {
         return produit;
     }
 
-    public List<Produit> getAllProduit(Context context){
+    public List<Produit> getAllProduit(Context context, int numeroListe){
         repository = new ProduitRepository(context);
-        List<Produit> produits = repository.getAllProduit();
+        List<Produit> produits = repository.getAllProduit(numeroListe);
         return produits;
     }
 
-    public void setProduit(Context context ,Produit produit){
+    public void addProduit(Context context , Produit produit){
         repository = new ProduitRepository(context);
         repository.addProduit(produit);
     }

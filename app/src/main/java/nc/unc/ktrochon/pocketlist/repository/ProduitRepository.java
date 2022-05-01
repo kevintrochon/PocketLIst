@@ -36,23 +36,23 @@ public class ProduitRepository {
         while (!cursor.isAfterLast()) {
            p.setNomProduit(cursor.getString(cursor.getColumnIndex("nom")));
            p.setDescription(cursor.getString(cursor.getColumnIndex("description")));
-           //p.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat"))));
+           p.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_prod"))));
             cursor.moveToNext();
         }
         return p;
     }
 
     @SuppressLint("Range")
-    public List<Produit> getAllProduit(){
+    public List<Produit> getAllProduit(int numeroList){
         List<Produit> list = new ArrayList<>();
-        Cursor cursor = connexion.getReadableDatabase().rawQuery("SELECT * FROM produit ",null);
+        Cursor cursor = connexion.getReadableDatabase().rawQuery("SELECT * FROM produit INNER JOIN liste ON liste.key_prod = produit.key_prod WHERE key_liste = " + numeroList,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Produit p = new Produit();
             p.setNomProduit(cursor.getString(cursor.getColumnIndex("nom")));
             p.setDescription(cursor.getString(cursor.getColumnIndex("description")));
-            /*Integer id = Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat")));
-            p.setId(id);*/
+            p.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_prod"))));
+            p.setCategory(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat"))));
             list.add(p);
             cursor.moveToNext();
         }
@@ -70,7 +70,6 @@ public class ProduitRepository {
                 + ")";
 
         connexion.getWritableDatabase().execSQL(query);
-        Log.i("addProduit","Produit ajouter");
     }
 
     public void deleteProduit(Produit produit){
@@ -78,7 +77,6 @@ public class ProduitRepository {
                 + produit.getNomProduit()
                 +"'";
         connexion.getWritableDatabase().execSQL(query);
-        Log.i("addProduit","Produit supprimer");
     }
 
     public void updateNomProduit(Produit produit,String nom) {
@@ -88,7 +86,6 @@ public class ProduitRepository {
                 + produit.getNomProduit()
                 +"'";
         connexion.getWritableDatabase().execSQL(query);
-        Log.i("addProduit","Produit supprimer");
     }
 
 }
