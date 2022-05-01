@@ -1,6 +1,7 @@
 package nc.unc.ktrochon.pocketlist.service;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.List;
 

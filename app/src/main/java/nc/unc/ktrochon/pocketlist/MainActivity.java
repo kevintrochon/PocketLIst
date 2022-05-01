@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     ListProduitAdpter adapter;
     List<ListProduit> maListeProduit;
+    private ListServices services = new ListServices();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FloatingActionButton button = findViewById(R.id.create_list_fab);
         button.setOnClickListener(this);
         button.show();
-        ListServices services = new ListServices();
         maListeProduit= services.getAllList(this);
         adapter = new ListProduitAdpter(maListeProduit,this);
         RecyclerView recyclerView = findViewById(R.id.liste_recycler_view);
@@ -42,12 +42,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void ajouterListe(View view){
-        ListProduit listProduit = new ListProduit("Ma liste de vetements");
-        maListeProduit.add(listProduit);
-        adapter = new ListProduitAdpter(maListeProduit,this);
-        RecyclerView recyclerView = findViewById(R.id.liste_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        recyclerView.setAdapter(adapter);
+        ListProduit listProduit = new ListProduit();
+        Intent intent = new Intent(this, ListProduitDetailsActivity.class);
+        Gson json = new Gson();
+        String myJSON = json.toJson(listProduit);
+        intent.putExtra("liste",myJSON);
+        startActivity(intent);
     }
 
     @Override
