@@ -35,7 +35,7 @@ public class DetailsProduitActivity extends AppCompatActivity {
 
         nomProduitView.setText(produit.getNomProduit());
         descriptionView.setText(produit.getDescription());
-        categoryView.setText(produit.getCategory().getCategoryName());
+//        categoryView.setText(produit.getCategory().getCategoryName());
 
     }
 

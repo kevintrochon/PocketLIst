@@ -39,7 +39,7 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
         holder.cardView.setOnClickListener(itemClickListener);
         holder.cardView.setTag(position);
         holder.titleView.setText(produit.getNomProduit());
-        holder.categoryView.setText(produit.getCategory().getCategoryName());
+//        holder.categoryView.setText(produit.getCategory().getCategoryName());
         holder.excerptView.setText(produit.getDescription());
     }
 
