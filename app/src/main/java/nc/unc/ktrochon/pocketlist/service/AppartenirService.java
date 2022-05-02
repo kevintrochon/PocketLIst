@@ -24,4 +24,9 @@ public class AppartenirService {
         List<Produit> produits = produitServices.getAllProduit(context, listAppartenir.get(numeroListe-1).getKey_list());
         return produits;
     }
+
+    public void add(Context context,int numeroListe, int numeroProduit, int quantity) {
+        repository = new AppartenirRepository(context);
+        repository.addAppartenir(numeroListe,numeroListe,quantity);
+    }
 }

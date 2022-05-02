@@ -24,18 +24,31 @@
     <EditText
         android:id="@+id/text2"
         android:layout_width="match_parent"
-        android:layout_height="429dp"
+        android:layout_height="344dp"
         android:layout_below="@+id/title2"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="87dp"
         android:hint="Description du produit" />
 
     <EditText
         android:id="@+id/edit_produit"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_width="280dp"
+        android:layout_height="89dp"
         android:layout_below="@+id/title2"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="3dp"
         android:hint="Catégorie du produit" />
+
+    <EditText
+        android:id="@+id/quantite"
+        style="@style/NoteTitleFont"
+        android:layout_width="128dp"
+        android:layout_height="85dp"
+        android:layout_below="@+id/title2"
+        android:layout_alignRight="@+id/title2"
+        android:layout_marginTop="0dp"
+        android:layout_marginRight="0dp"
+        android:inputType="number"
+        android:text="Quantite" />
+
     <Button
         android:id="@+id/sauvegarder_produit"
         android:layout_width="205dp"

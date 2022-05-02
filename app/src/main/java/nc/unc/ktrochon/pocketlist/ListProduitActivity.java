@@ -17,13 +17,18 @@ import nc.unc.ktrochon.pocketlist.adapter.ProduitAdapter;
 import nc.unc.ktrochon.pocketlist.entity.CategoryProduit;
 import nc.unc.ktrochon.pocketlist.entity.ListProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
+import nc.unc.ktrochon.pocketlist.service.AppartenirService;
+import nc.unc.ktrochon.pocketlist.service.ListServices;
 import nc.unc.ktrochon.pocketlist.service.ProduitServices;
 
 public class ListProduitActivity extends AppCompatActivity implements View.OnClickListener {
 
     List<Produit> produits;
     ProduitAdapter adapter;
-    private ProduitServices services = new ProduitServices();
+    private AppartenirService services = new AppartenirService();
+    private ProduitServices produitServices = new ProduitServices();
+    private ListServices listServices = new ListServices();
+    private ListProduit listProduit;
 
 
     @Override
@@ -31,8 +36,9 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_produit);
         Gson gson = new Gson();
-        ListProduit listProduit = gson.fromJson(getIntent().getStringExtra("listProduits"), ListProduit.class);
-        produits = services.getAllProduit(this,listProduit.getId());
+        listProduit = gson.fromJson(getIntent().getStringExtra("listProduits"), ListProduit.class);
+
+        produits = produitServices.getAllProduit(this,listProduit.getId());
         adapter = new ProduitAdapter(produits, this);
 
         RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);
@@ -63,6 +69,7 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         String myJSON = json.toJson(p);
         intent.putExtra("produits",myJSON);
         intent.putExtra("produitIndex",-1);
+        intent.putExtra("listeProduitName",listProduit.getName());
         startActivity(intent);
     }
 }

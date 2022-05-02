@@ -51,4 +51,17 @@ public class AppartenirRepository {
         return list;
     }
 
+    public void addAppartenir(int numeroListe, int numeroProduit, int quantity) {
+
+        String query = "INSERT INTO appartenir (key_liste,key_prod,quantite) VALUES ( "
+                +numeroListe
+                +","
+                +numeroProduit
+                +","
+                + quantity
+                + ")";
+
+        connexion.getWritableDatabase().execSQL(query);
+    }
+
 }
