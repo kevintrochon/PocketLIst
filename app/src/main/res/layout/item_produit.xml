@@ -21,6 +21,7 @@
                 style="@style/NoteTitleFont"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
                 android:text="Produit 1" />
 
             <TextView
@@ -29,6 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/title"
+                android:layout_marginLeft="16dp"
                 android:text="Quantite" />
 
             <TextView
@@ -37,6 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
                 android:text="Categorie" />
 
             <TextView
@@ -49,7 +52,8 @@
                 android:maxLines="1"
                 android:textColor="@android:color/darker_gray"
                 android:textStyle="italic"
-                tools:text="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." />
+                tools:text="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                android:layout_marginLeft="16dp"/>
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
