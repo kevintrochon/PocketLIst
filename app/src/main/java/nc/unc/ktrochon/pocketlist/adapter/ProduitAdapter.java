@@ -34,12 +34,13 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(ProduitAdapter.ViewHolder  holder, int position) {
+    public void onBindViewHolder(ProduitAdapter.ViewHolder  holder,int position) {
         Produit produit = produits.get(position);
         holder.cardView.setOnClickListener(itemClickListener);
         holder.cardView.setTag(position);
         holder.titleView.setText(produit.getNomProduit());
-//        holder.categoryView.setText(produit.getCategory().getCategoryName());
+        holder.categoryView.setText(""+produit.getCategory());
+        holder.quantityView.setText(""+1);
         holder.excerptView.setText(produit.getDescription());
     }
 
@@ -56,5 +57,6 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
         TextView titleView = cardView.findViewById(R.id.title);
         TextView categoryView = cardView.findViewById(R.id.category);
         TextView excerptView = cardView.findViewById(R.id.excerpt);
+        TextView quantityView = cardView.findViewById(R.id.quantite);
     }
 }

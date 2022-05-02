@@ -61,7 +61,7 @@ public class ListDAO extends SQLiteOpenHelper {
             db.execSQL(queryLIste);
             queryLIste = "INSERT INTO produit (nom,description,key_cat) VALUES('test','test',5)";
             db.execSQL(queryLIste);
-            queryLIste = "INSERT INTO appartenir (key_list,key_prod,quantity) VALUES(1,1,5)";
+            queryLIste = "INSERT INTO appartenir (key_liste,key_prod,quantite) VALUES(1,1,5)";
             db.execSQL(queryLIste);
         }
         catch (SQLException e) {

@@ -18,11 +18,10 @@ public class AppartenirService {
     public AppartenirService() {
     }
 
-    public List<Produit> getProduitInList(Context context,int numeroListe){
+    public List<Appartenir> getAllAppartenir(Context context,int numeroListe){
         repository = new AppartenirRepository(context);
         List<Appartenir> listAppartenir = repository.getAppartenanceByListe(numeroListe);
-        List<Produit> produits = produitServices.getAllProduit(context, listAppartenir.get(numeroListe-1).getKey_list());
-        return produits;
+        return listAppartenir;
     }
 
     public void add(Context context,int numeroListe, int numeroProduit, int quantity) {

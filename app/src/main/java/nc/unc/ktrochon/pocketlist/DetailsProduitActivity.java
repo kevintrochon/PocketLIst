@@ -45,12 +45,12 @@ public class DetailsProduitActivity extends AppCompatActivity {
         nomProduitView = findViewById(R.id.title2);
         descriptionView = findViewById(R.id.text2);
         categoryView = findViewById(R.id.edit_produit);
-        quantity = findViewById(R.id.quantite);
-        categoryProduit = services.getCategoryProduitByName(this,categoryView.getText().toString());
+        quantityView = findViewById(R.id.quantite);
+        categoryProduit = services.getCategoryProduitByName(this,""+produit.getCategory());
         nomProduitView.setText(produit.getNomProduit());
         descriptionView.setText(produit.getDescription());
         categoryView.setText(categoryProduit.getCategoryName());
-        quantityView.setText(quantity.getText());
+        quantityView.setText(String.valueOf(getIntent().getIntExtra("quantiteProduit",-1)));
     }
 
     public void sauvegarderProduit(View view){
@@ -60,6 +60,7 @@ public class DetailsProduitActivity extends AppCompatActivity {
         quantity = findViewById(R.id.quantite);
         categoryProduit = services.getCategoryProduitByName(this,category.getText().toString());
         nomProduitView.setText(title.getText());
+        quantityView.setText(quantity.getText());
         produit.setNomProduit(title.getText().toString());
         produit.setDescription(categoryProduit.getCategoryName());
         produit.setCategory(categoryProduit.getCategoryId());

@@ -8,12 +8,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import nc.unc.ktrochon.pocketlist.adapter.ProduitAdapter;
+import nc.unc.ktrochon.pocketlist.entity.Appartenir;
 import nc.unc.ktrochon.pocketlist.entity.CategoryProduit;
 import nc.unc.ktrochon.pocketlist.entity.ListProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
@@ -29,16 +31,21 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
     private ProduitServices produitServices = new ProduitServices();
     private ListServices listServices = new ListServices();
     private ListProduit listProduit;
+    private List<Appartenir> allAppartenir;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_produit);
+        FloatingActionButton button = findViewById(R.id.create_list_prod);
+        button.setOnClickListener(this);
+        button.show();
         Gson gson = new Gson();
         ListProduit produit = gson.fromJson(getIntent().getStringExtra("listProduits"),ListProduit.class);
         listProduit = listServices.getListProduitByName(this,produit.getName());
         produits = produitServices.getAllProduit(this,listProduit.getId());
+        allAppartenir = services.getAllAppartenir(this,listProduit.getId());
         adapter = new ProduitAdapter(produits, this);
 
         RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);
@@ -50,6 +57,9 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View view) {
         if (view.getTag() != null)
             showNoteDetail((int)view.getTag());
+        else{
+            ajouterProduit(view);
+        }
     }
 
     public void showNoteDetail(int produitIndex){
@@ -59,6 +69,7 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         String myJSON = json.toJson(produit);
         intent.putExtra("produits",myJSON);
         intent.putExtra("produitIndex",produitIndex);
+        intent.putExtra("quantiteProduit",allAppartenir.get(0).getQuantite());
         startActivity(intent);
     }
 
