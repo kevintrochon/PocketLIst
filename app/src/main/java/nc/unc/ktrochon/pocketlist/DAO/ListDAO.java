@@ -90,10 +90,12 @@ public class ListDAO extends SQLiteOpenHelper {
         String strSql1 = "DROP TABLE IF EXISTS produit";
         String strSql2 = "DROP TABLE IF EXISTS categorie";
         String strSql3 = "DROP TABLE IF EXISTS liste";
+        String strSql4 = "DROP TABLE IF EXISTS appartenir";
 
         db.execSQL(strSql1);
         db.execSQL(strSql2);
         db.execSQL(strSql3);
+        db.execSQL(strSql4);
         this.onCreate(db);
         Log.i("DATABASE", "onUpgrade Invoked");
     }
