@@ -43,6 +43,7 @@ public class ListDAO extends SQLiteOpenHelper {
                 +" key_app INTEGER PRIMARY KEY AUTOINCREMENT, "
                 +" key_liste INTEGER, "
                 +" key_prod INTEGER, "
+                +" quantite INTEGER, "
                 +" FOREIGN KEY (key_liste) REFERENCES liste(key_liste), "
                 +" FOREIGN KEY (key_prod) REFERENCES produit(key_prod))";
                 

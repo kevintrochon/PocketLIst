@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="100dp">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -10,18 +10,26 @@
         android:focusable="true"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground">
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="117dp"
             android:padding="10dp">
 
             <TextView
+                android:id="@+id/title"
+                style="@style/NoteTitleFont"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/title"
-                android:text="Produit 1"
+                android:text="Produit 1" />
+
+            <TextView
+                android:id="@+id/quantite"
                 style="@style/NoteTitleFont"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/title"
+                android:text="Quantite" />
 
             <TextView
                 android:id="@+id/category"
@@ -32,15 +40,16 @@
                 android:text="Categorie" />
 
             <TextView
+                android:id="@+id/excerpt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/excerpt"
-                android:layout_below="@+id/title"
-                tools:text="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
-                android:maxLines="1"
+                android:layout_below="@+id/quantite"
+                android:layout_marginTop="8dp"
                 android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@android:color/darker_gray"
                 android:textStyle="italic"
-                android:textColor="@android:color/darker_gray"/>
+                tools:text="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
