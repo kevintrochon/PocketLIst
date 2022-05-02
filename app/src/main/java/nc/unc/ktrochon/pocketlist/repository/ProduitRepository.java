@@ -45,7 +45,7 @@ public class ProduitRepository {
     @SuppressLint("Range")
     public List<Produit> getAllProduit(int numeroList){
         List<Produit> list = new ArrayList<>();
-        Cursor cursor = connexion.getReadableDatabase().rawQuery("SELECT * FROM produit INNER JOIN liste ON liste.key_prod = produit.key_prod WHERE key_liste = " + numeroList,null);
+        Cursor cursor = connexion.getReadableDatabase().rawQuery("SELECT * FROM produit INNER JOIN appartenir ON appartenir.key_prod = produit.key_prod WHERE appartenir.key_liste = " + numeroList,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Produit p = new Produit();

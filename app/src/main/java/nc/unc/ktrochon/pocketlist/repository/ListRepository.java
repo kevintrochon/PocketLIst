@@ -27,7 +27,6 @@ public class ListRepository {
         while (!cursor.isAfterLast()) {
             listProduit.setName(cursor.getString(cursor.getColumnIndex("nom")));
             listProduit.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_liste"))));
-            listProduit.setKey_prod(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_prod"))));
             cursor.moveToNext();
         }
         return listProduit;
@@ -42,7 +41,6 @@ public class ListRepository {
             ListProduit listProduit = new ListProduit();
             listProduit.setName(cursor.getString(cursor.getColumnIndex("nom")));
             listProduit.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_liste"))));
-            listProduit.setKey_prod(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_prod"))));
             list.add(listProduit);
             cursor.moveToNext();
         }

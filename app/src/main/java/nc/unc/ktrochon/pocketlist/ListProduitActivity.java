@@ -36,8 +36,8 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_produit);
         Gson gson = new Gson();
-        listProduit = gson.fromJson(getIntent().getStringExtra("listProduits"), ListProduit.class);
-
+        ListProduit produit = gson.fromJson(getIntent().getStringExtra("listProduits"),ListProduit.class);
+        listProduit = listServices.getListProduitByName(this,produit.getName());
         produits = produitServices.getAllProduit(this,listProduit.getId());
         adapter = new ProduitAdapter(produits, this);
 
