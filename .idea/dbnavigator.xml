@@ -32,10 +32,19 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="7e6fa918-3b97-4eb2-905f-88a12399338d" object-ref="schemas/main/tables/liste" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="7e6fa918-3b97-4eb2-905f-88a12399338d" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="7e6fa918-3b97-4eb2-905f-88a12399338d" dataset="main.liste" active-filter-id="">
+      <filter id="825ce4a7-bd28-4297-b59e-bfcf18f86ca5" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="key_liste" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -81,7 +90,7 @@
           <port value="" />
           <database value="" />
           <files>
-            <file path="C:\Temp\caddie.db" schema="main" />
+            <file path="C:\Temp\caddie0.db" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
