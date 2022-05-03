@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -32,17 +32,30 @@
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="7e6fa918-3b97-4eb2-905f-88a12399338d" object-ref="schemas/main/tables/liste" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="7e6fa918-3b97-4eb2-905f-88a12399338d" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="7e6fa918-3b97-4eb2-905f-88a12399338d" dataset="main.liste" active-filter-id="">
+    <filter-actions connection-id="7e6fa918-3b97-4eb2-905f-88a12399338d" dataset="main.produit" active-filter-id="EMPTY_FILTER">
+      <filter id="3b746037-a3d7-431c-9c1c-60173109f97f" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="key_prod" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="7e6fa918-3b97-4eb2-905f-88a12399338d" dataset="main.appartenir" active-filter-id="EMPTY_FILTER">
+      <filter id="144a9431-8a0b-4d3f-b080-8353b918a7ab" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="key_app" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="7e6fa918-3b97-4eb2-905f-88a12399338d" dataset="main.liste" active-filter-id="EMPTY_FILTER">
       <filter id="825ce4a7-bd28-4297-b59e-bfcf18f86ca5" name="Filter" temporary="false" custom-name="false" type="basic" join-type="AND">
         <condition column="key_liste" operator="=" value="" active="true" />
+      </filter>
+    </filter-actions>
+    <filter-actions connection-id="7e6fa918-3b97-4eb2-905f-88a12399338d" dataset="main.categorie" active-filter-id="EMPTY_FILTER">
+      <filter id="990c4ebe-1678-4310-884a-dc8656f641a4" name="Filter 1" temporary="false" custom-name="false" type="basic" join-type="AND">
+        <condition column="key_cat" operator="=" value="" active="true" />
       </filter>
     </filter-actions>
   </component>
@@ -90,7 +103,7 @@
           <port value="" />
           <database value="" />
           <files>
-            <file path="C:\Temp\caddie0.db" schema="main" />
+            <file path="C:\Temp\caddie.db" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
