@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="70dp">
+    android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/list_card_view"
+        android:id="@+id/list_prod_card_view"
         android:focusable="true"
         android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:foreground="?android:attr/selectableItemBackground"
+        tools:ignore="MissingConstraints">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp">
 
             <TextView
-                android:id="@+id/listName"
+                android:id="@+id/produit_name"
                 style="@style/NoteTitleFont"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="125dp"
                 android:layout_marginTop="10dp"
-                android:text="Ma liste de produit" />
+                android:layout_marginRight="129dp"
+                android:text="Nom du Produit" />
 
             <CheckBox
-                android:id="@+id/check_delete"
-                style="@style/NoteTitleFont"
+                android:id="@+id/check_add_prod"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 />
+                android:layout_height="wrap_content" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

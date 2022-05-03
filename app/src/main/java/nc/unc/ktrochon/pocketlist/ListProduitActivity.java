@@ -58,7 +58,8 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         if (view.getTag() != null)
             showNoteDetail((int)view.getTag());
         else{
-            ajouterProduit(view);
+            Intent intent = new Intent(this, AddProduitToListActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -73,7 +74,7 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         startActivity(intent);
     }
 
-    public void ajouterProduit(View view){
+    /*public void ajouterProduit(View view){
         Produit p = new Produit();
         Intent intent = new Intent(this, DetailsProduitActivity.class);
         Gson json = new Gson();
@@ -82,5 +83,5 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         intent.putExtra("produitIndex",-1);
         intent.putExtra("listeProduitName",listProduit.getName());
         startActivity(intent);
-    }
+    }*/
 }

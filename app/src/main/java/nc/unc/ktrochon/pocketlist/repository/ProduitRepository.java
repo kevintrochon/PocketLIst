@@ -59,6 +59,23 @@ public class ProduitRepository {
         return list;
     }
 
+    @SuppressLint("Range")
+    public List<Produit> getAll(){
+        List<Produit> list = new ArrayList<>();
+        Cursor cursor = connexion.getReadableDatabase().rawQuery("SELECT * FROM produit ",null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Produit p = new Produit();
+            p.setNomProduit(cursor.getString(cursor.getColumnIndex("nom")));
+            p.setDescription(cursor.getString(cursor.getColumnIndex("description")));
+            p.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_prod"))));
+            p.setCategory(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat"))));
+            list.add(p);
+            cursor.moveToNext();
+        }
+        return list;
+    }
+
     public void addProduit(Produit produit) {
 
         String query = "INSERT INTO PRODUIT (Nom,Description,key_cat) VALUES ('"

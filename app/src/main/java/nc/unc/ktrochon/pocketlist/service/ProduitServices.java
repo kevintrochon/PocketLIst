@@ -24,6 +24,12 @@ public class ProduitServices {
         return produits;
     }
 
+    public List<Produit> getAll(Context context){
+        repository = new ProduitRepository(context);
+        List<Produit> produits = repository.getAll();
+        return produits;
+    }
+
     public void addProduit(Context context , Produit produit){
         repository = new ProduitRepository(context);
         repository.addProduit(produit);
