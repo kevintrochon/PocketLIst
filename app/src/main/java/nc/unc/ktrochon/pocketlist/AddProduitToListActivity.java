@@ -16,13 +16,17 @@ import java.util.List;
 import nc.unc.ktrochon.pocketlist.adapter.AddProduitAdapter;
 import nc.unc.ktrochon.pocketlist.adapter.ListProduitAdpter;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
+import nc.unc.ktrochon.pocketlist.service.AppartenirService;
 import nc.unc.ktrochon.pocketlist.service.ProduitServices;
 
 public class AddProduitToListActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ProduitServices services = new ProduitServices();
+    private AppartenirService appartenirService = new AppartenirService();
     private AddProduitAdapter adapter;
     private FloatingActionButton button;
+    private List<Produit> list;
+    private List<Produit> produitList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,7 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
         button = findViewById(R.id.create_list_prod);
         button.setOnClickListener(this);
         button.show();
-        List<Produit> list = services.getAll(this);
+        list = services.getAll(this);
         adapter = new AddProduitAdapter(list,this);
         RecyclerView recyclerView = findViewById(R.id.add_produit_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
@@ -43,10 +47,18 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
         if (view.getTag() != null && !hasChecked(view)){
             // Add one product on the shopping list.
             Log.i("Add_product :","Add one product on the shopping list.");
+            addOnlyOneProductOnList(view);
         }
         else{
             // Add all products on the shopping list.
             Log.i("Add_product :","Add all products on the shopping list where the checkbox is checked.");
+            for (Produit p:
+                 list) {
+                if(hasChecked(findViewById(R.id.check_add_prod))){
+                    this.produitList.add(p);
+                }
+            }
+            addAllProductsOnList(view,this.produitList);
         }
     }
 
@@ -57,5 +69,16 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
             check = true;
         }
         return check;
+    }
+
+    public void addOnlyOneProductOnList(View view){
+        Produit p = list.get((int)view.getTag());
+        appartenirService.add(this,1,p.getId(),0);
+    }
+
+    public void addAllProductsOnList(View view,List<Produit> produitList){
+        for (Produit p:produitList) {
+            appartenirService.add(this,1,p.getId(),0);
+        }
     }
 }
