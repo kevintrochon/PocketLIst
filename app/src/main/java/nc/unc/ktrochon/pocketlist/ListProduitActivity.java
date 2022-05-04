@@ -33,8 +33,8 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
     private ListServices listServices = new ListServices();
     private CategoryServices caterogyServices = new CategoryServices();
     private ListProduit listProduit;
-    private List<CategoryProduit> category;
-    private List<Appartenir> allAppartenir;
+    private CategoryProduit category;
+    Appartenir appartenir;
 
 
     @Override
@@ -45,13 +45,20 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         button.setOnClickListener(this);
         button.show();
         Gson gson = new Gson();
-        ListProduit produit = gson.fromJson(getIntent().getStringExtra("listProduits"),ListProduit.class);
-        listProduit = listServices.getListProduitByName(this,produit.getName());
+        ListProduit listProduit = gson.fromJson(getIntent().getStringExtra("listProduits"),ListProduit.class);
+        this.listProduit = listServices.getListProduitByName(this,listProduit.getName());
+
+        produits = produitServices.getAllProduit(this, this.listProduit.getId());
+
+        for (Produit p:
+             produits) {
+            appartenir = services.getAppartenir(this, this.listProduit.getId(),p.getId());
+            category = caterogyServices.getCategoryById(this,p.getCategory());
+        }
 
         produits = produitServices.getAllProduit(this,listProduit.getId());
-        //category = caterogyServices.getCategoryProduitByName(this,produits.getCategoryId());
-        allAppartenir = services.getAllAppartenir(this,listProduit.getId());
-        adapter = new ProduitAdapter(produits, this);
+
+        adapter = new ProduitAdapter(produits, this,category.getCategoryName(),appartenir.getQuantite());
 
         RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
@@ -75,18 +82,8 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         String myJSON = json.toJson(produit);
         intent.putExtra("produits",myJSON);
         intent.putExtra("produitIndex",produitIndex);
-        intent.putExtra("quantiteProduit",allAppartenir.get(0).getQuantite());
+        intent.putExtra("quantiteProduit",appartenir.getQuantite());
         startActivity(intent);
     }
 
-    /*public void ajouterProduit(View view){
-        Produit p = new Produit();
-        Intent intent = new Intent(this, DetailsProduitActivity.class);
-        Gson json = new Gson();
-        String myJSON = json.toJson(p);
-        intent.putExtra("produits",myJSON);
-        intent.putExtra("produitIndex",-1);
-        intent.putExtra("listeProduitName",listProduit.getName());
-        startActivity(intent);
-    }*/
 }

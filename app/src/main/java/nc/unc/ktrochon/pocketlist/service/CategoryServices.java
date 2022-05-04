@@ -3,6 +3,7 @@ package nc.unc.ktrochon.pocketlist.service;
 import android.content.Context;
 import java.util.List;
 
+import nc.unc.ktrochon.pocketlist.ListProduitActivity;
 import nc.unc.ktrochon.pocketlist.entity.CategoryProduit;
 import nc.unc.ktrochon.pocketlist.repository.CategoryRepository;
 
@@ -22,4 +23,9 @@ public class CategoryServices {
         return  categories;
     }
 
+    public CategoryProduit getCategoryById(Context context, int id) {
+        repository = new CategoryRepository(context);
+        CategoryProduit categoryProduit = repository.getCategoryById(id);
+        return categoryProduit ;
+    }
 }

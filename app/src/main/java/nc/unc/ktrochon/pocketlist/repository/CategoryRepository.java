@@ -45,5 +45,17 @@ public class CategoryRepository {
         return categoryProduits;
     }
 
+    @SuppressLint("Range")
+    public CategoryProduit getCategoryById(int numeroCategory){
+        CategoryProduit categoryProduit = new CategoryProduit();
+        Cursor cursor = connexion.getReadableDatabase().rawQuery("SELECT * FROM categorie WHERE key_cat = " + numeroCategory,null);
+        cursor.moveToFirst();
+        if(!cursor.isAfterLast()) {
+            categoryProduit.setCategoryName(cursor.getString(cursor.getColumnIndex("nom")));
+            categoryProduit.setCategoryId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_cat"))));
+            cursor.moveToNext();
+        }
+        return categoryProduit;
+    }
 
 }

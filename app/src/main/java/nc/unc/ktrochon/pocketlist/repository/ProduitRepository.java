@@ -105,4 +105,14 @@ public class ProduitRepository {
         connexion.getWritableDatabase().execSQL(query);
     }
 
+    public void updateDescriptionProduit(Produit produit,String newDescription) {
+        String query = "UPDATE produit SET description ='"
+                + newDescription
+                +"' WHERE nom = '"
+                + produit.getNomProduit()
+                +"'";
+        connexion.getWritableDatabase().execSQL(query);
+    }
+
+
 }

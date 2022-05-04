@@ -45,4 +45,9 @@ public class ProduitServices {
         repository.updateNomProduit(produit,nomProduit);
     }
 
+    public void updateDescriptionProduct(Context context, Produit produit,String newDescription){
+        repository = new ProduitRepository(context);
+        repository.updateDescriptionProduit(produit,newDescription);
+    }
+
 }

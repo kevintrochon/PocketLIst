@@ -13,16 +13,21 @@ import java.util.List;
 
 import nc.unc.ktrochon.pocketlist.ListProduitActivity;
 import nc.unc.ktrochon.pocketlist.R;
+import nc.unc.ktrochon.pocketlist.entity.CategoryProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
 
 public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHolder> {
 
     List<Produit> produits;
     View.OnClickListener itemClickListener;
+    String categoryName;
+    int quantite;
 
-    public ProduitAdapter(List<Produit> produits, ListProduitActivity itemClickListener) {
+    public ProduitAdapter(List<Produit> produits, ListProduitActivity itemClickListener, String categoryName,int quantite) {
         this.produits = produits;
         this.itemClickListener = itemClickListener;
+        this.categoryName = categoryName;
+        this.quantite = quantite;
     }
 
     @NonNull
@@ -39,8 +44,8 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
         holder.cardView.setOnClickListener(itemClickListener);
         holder.cardView.setTag(position);
         holder.titleView.setText(produit.getNomProduit());
-        holder.categoryView.setText(""+produit.getCategory());
-        holder.quantityView.setText(""+1);
+        holder.categoryView.setText(categoryName);
+        holder.quantityView.setText(""+quantite);
         holder.excerptView.setText(produit.getDescription());
     }
 
