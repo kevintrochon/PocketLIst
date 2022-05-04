@@ -66,7 +66,12 @@ public class ListDAO extends SQLiteOpenHelper {
                     "('Coca Cola','Au moins du 1.5l',4), " +
                     "('Papier toilette','En conditionnement de 12',9)";
             db.execSQL(queryLIste);
-            queryLIste = "INSERT INTO appartenir (key_liste,key_prod,quantite) VALUES(1,1,5)";
+            queryLIste = "INSERT INTO appartenir (key_liste,key_prod,quantite) VALUES" +
+                    "(1,1,5), " +
+                    "(1,2,8), " +
+                    "(1,3,1), " +
+                    "(1,4,3), " +
+                    "(1,5,2)";
             db.execSQL(queryLIste);
         }
         catch (SQLException e) {

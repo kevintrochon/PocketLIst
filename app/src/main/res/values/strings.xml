@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PocketLIst</string>
+    <string name="tv_main1">Mon panier</string>
+    <string name="tv_main2">Bouton + pour ajouter une liste</string>
+    <string name="tv_main3">Pour afficher le détail cliquer sur la liste</string>
+    <string name="tv_main4">Pour éditer cocher la case et cliquer sur la liste</string>
 </resources>

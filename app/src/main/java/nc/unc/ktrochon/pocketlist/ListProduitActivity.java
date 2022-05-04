@@ -20,6 +20,7 @@ import nc.unc.ktrochon.pocketlist.entity.CategoryProduit;
 import nc.unc.ktrochon.pocketlist.entity.ListProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
 import nc.unc.ktrochon.pocketlist.service.AppartenirService;
+import nc.unc.ktrochon.pocketlist.service.CategoryServices;
 import nc.unc.ktrochon.pocketlist.service.ListServices;
 import nc.unc.ktrochon.pocketlist.service.ProduitServices;
 
@@ -30,7 +31,9 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
     private AppartenirService services = new AppartenirService();
     private ProduitServices produitServices = new ProduitServices();
     private ListServices listServices = new ListServices();
+    private CategoryServices caterogyServices = new CategoryServices();
     private ListProduit listProduit;
+    private CategoryServices category;
     private List<Appartenir> allAppartenir;
 
 
@@ -44,6 +47,7 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         Gson gson = new Gson();
         ListProduit produit = gson.fromJson(getIntent().getStringExtra("listProduits"),ListProduit.class);
         listProduit = listServices.getListProduitByName(this,produit.getName());
+       // category = caterogyServices.getCategoryProduitByName(this,produit.getId());
         produits = produitServices.getAllProduit(this,listProduit.getId());
         allAppartenir = services.getAllAppartenir(this,listProduit.getId());
         adapter = new ProduitAdapter(produits, this);

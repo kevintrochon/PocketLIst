@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        app:title="Edition de la liste"/>
+        app:backgroundTint="#8E8787"
+        app:title="Edition de la liste" />
 
     <EditText
         android:id="@+id/nameList"
@@ -28,8 +29,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/nameList"
         android:layout_marginTop="9dp"
+        android:onClick="sauvegarderListe"
         android:src="@drawable/ic_save_white_24dp"
-        android:onClick="sauvegarderListe"/>
+        app:backgroundTint="@color/cardview_dark_background"
+        app:tint="@color/white" />
 
     <ImageButton
         android:id="@+id/button_delete"
@@ -39,6 +42,8 @@
         android:layout_alignRight="@+id/nameList"
         android:layout_marginTop="9dp"
         android:src="@drawable/ic_delete_white_24dp"
-        android:onClick="supprimerListe"/>
+        android:onClick="supprimerListe"
+        app:backgroundTint="@color/cardview_dark_background"
+        app:tint="@color/white" />
 
 </RelativeLayout>
