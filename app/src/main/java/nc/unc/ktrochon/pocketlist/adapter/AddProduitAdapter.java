@@ -3,6 +3,7 @@ package nc.unc.ktrochon.pocketlist.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -30,7 +31,7 @@ public class AddProduitAdapter extends RecyclerView.Adapter<AddProduitAdapter.Vi
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_add_produit,parent,false);
-        return new AddProduitAdapter.ViewHolder(itemView);
+        return new ViewHolder(itemView);
     }
 
     @Override
@@ -39,6 +40,11 @@ public class AddProduitAdapter extends RecyclerView.Adapter<AddProduitAdapter.Vi
         holder.cardView.setOnClickListener(itemClickListener);
         holder.cardView.setTag(position);
         holder.titleView.setText(produit.getNomProduit());
+        holder.checkBox.setOnCheckedChangeListener(
+                (buttonView, isChecked) -> {
+                    holder.checkBox.setSelected(isChecked);
+                }
+        );
     }
 
     @Override
@@ -50,7 +56,8 @@ public class AddProduitAdapter extends RecyclerView.Adapter<AddProduitAdapter.Vi
         public ViewHolder(View itemView) {
             super(itemView);
         }
-        CardView cardView = itemView.findViewById(R.id.list_prod_card_view);
+        CardView cardView = itemView.findViewById(R.id.card_view_add);
         TextView titleView = cardView.findViewById(R.id.produit_name);
+        CheckBox checkBox = cardView.findViewById(R.id.check_add_produit);
     }
 }

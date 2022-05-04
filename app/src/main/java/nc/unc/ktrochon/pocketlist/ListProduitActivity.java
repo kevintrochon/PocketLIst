@@ -33,8 +33,8 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
     private ListServices listServices = new ListServices();
     private CategoryServices caterogyServices = new CategoryServices();
     private ListProduit listProduit;
-    private CategoryProduit category;
-    Appartenir appartenir;
+    private List<CategoryProduit> category;
+    List<Appartenir> appartenir;
 
 
     @Override
@@ -50,15 +50,14 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
 
         produits = produitServices.getAllProduit(this, this.listProduit.getId());
 
-        for (Produit p:
-             produits) {
-            appartenir = services.getAppartenir(this, this.listProduit.getId(),p.getId());
-            category = caterogyServices.getCategoryById(this,p.getCategory());
-        }
+
+        appartenir = services.getAllAppartenir(this, this.listProduit.getId());
+        category = caterogyServices.getAllCategory(this);
+
 
         produits = produitServices.getAllProduit(this,listProduit.getId());
 
-        adapter = new ProduitAdapter(produits, this,category.getCategoryName(),appartenir.getQuantite());
+        adapter = new ProduitAdapter(produits, this,category,appartenir);
 
         RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
@@ -71,18 +70,20 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
             showNoteDetail((int)view.getTag());
         else{
             Intent intent = new Intent(this, AddProduitToListActivity.class);
+            intent.putExtra("numeroDeLaList",listProduit.getId());
             startActivity(intent);
         }
     }
 
     public void showNoteDetail(int produitIndex){
         Produit produit = produits.get(produitIndex);
+        Appartenir a = appartenir.get(produitIndex);
         Intent intent = new Intent(this, DetailsProduitActivity.class);
         Gson json = new Gson();
         String myJSON = json.toJson(produit);
         intent.putExtra("produits",myJSON);
         intent.putExtra("produitIndex",produitIndex);
-        intent.putExtra("quantiteProduit",appartenir.getQuantite());
+        intent.putExtra("quantiteProduit",a.getQuantite());
         startActivity(intent);
     }
 

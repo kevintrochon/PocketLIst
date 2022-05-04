@@ -9,16 +9,6 @@
         <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst - Copie (2)/app/src/main/res/layout/activity_main.xml" value="0.18072916666666666" />
         <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst - Copie (2)/app/src/main/res/layout/simple_spinner_dropdown_item.xml" value="0.18072916666666666" />
         <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst - Copie (2)/app/src/main/res/layout/simple_spinner_item.xml" value="0.18072916666666666" />
-        <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.339" />
-        <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst/app/src/main/res/drawable/ic_launcher_background.xml" value="0.339" />
-        <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst/app/src/main/res/layout/activity_add_produit_to_list.xml" value="0.35885416666666664" />
-        <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst/app/src/main/res/layout/activity_details_produit.xml" value="0.29259259259259257" />
-        <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst/app/src/main/res/layout/activity_list_produit.xml" value="0.22" />
-        <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst/app/src/main/res/layout/activity_list_produit_details.xml" value="0.31296296296296294" />
-        <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst/app/src/main/res/layout/item_add_produit.xml" value="0.35885416666666664" />
-        <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst/app/src/main/res/layout/item_list_produit.xml" value="0.1" />
-        <entry key="..\:/Users/5056win/Documents/UNC/PocketLIst/app/src/main/res/layout/item_produit.xml" value="0.35885416666666664" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.124" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_add_produit_to_list.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_details_produit.xml" value="0.1453125" />
@@ -26,8 +16,9 @@
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_list_produit_details.xml" value="0.1453125" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/activity_produit_form.xml" value="0.11302083333333333" />
-        <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/item_add_produit.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/item_list_produit.xml" value="0.1453125" />
+        <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/item_add_list_produit.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/item_add_produit.xml" value="0.2" />
+        <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/item_list_produit.xml" value="0.1" />
         <entry key="..\:/Users/Utilisateur/AndroidStudioProjects/PocketLIst/app/src/main/res/layout/item_produit.xml" value="0.25416666666666665" />
       </map>
     </option>
