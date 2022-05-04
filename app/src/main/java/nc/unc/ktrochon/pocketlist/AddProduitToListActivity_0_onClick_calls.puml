@@ -1,0 +1,192 @@
+@startuml
+
+/' diagram meta data start
+config=CallConfiguration;
+{
+  "rootMethod": "nc.unc.ktrochon.pocketlist.AddProduitToListActivity#onClick(View)",
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": true,
+    "cutInterfaceStructures": true,
+    "cutDataStructures": true,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showMethodParametersTypes": false,
+    "showMethodParametersNames": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 2,
+    "showCallOrder": false,
+    "edgeMode": "MethodsOnly", // TypesOnly, MethodsOnly, TypesAndMethods, MethodsAndDirectTypeUsage
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "nc.unc.ktrochon.pocketlist.AddProduitToListActivity",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="LR"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_115946 { 
+   	label=unc
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_949228562 { 
+   	label=ktrochon
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   subgraph cluster_1832856957 { 
+   	label=AddProduitToListActivity
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   AddProduitToListActivity1243990011XXXaddAllProductsOnList1410995327[
+	label="+ addAllProductsOnList()"
+	style=filled
+	fillcolor=white
+	tooltip="AddProduitToListActivity
+
+null"
+	fontcolor=darkgreen
+];
+
+AddProduitToListActivity1243990011XXXaddOnlyOneProductOnList381350486[
+	label="+ addOnlyOneProductOnList()"
+	style=filled
+	fillcolor=white
+	tooltip="AddProduitToListActivity
+
+null"
+	fontcolor=darkgreen
+];
+
+AddProduitToListActivity1243990011XXXhasChecked2666181[
+	label="+ hasChecked()"
+	style=filled
+	fillcolor=white
+	tooltip="AddProduitToListActivity
+
+null"
+	fontcolor=darkgreen
+];
+
+AddProduitToListActivity1243990011XXXonClick2666181[
+	label="+ onClick()"
+	style=filled
+	fillcolor=white
+	tooltip="AddProduitToListActivity
+
+null"
+	penwidth=4
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_596400111 { 
+   	label=AppartenirRepository
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   AppartenirRepository886306589XXXaddAppartenir1033387535[
+	label="+ addAppartenir()"
+	style=filled
+	fillcolor=white
+	tooltip="AppartenirRepository
+
+null"
+	fontcolor=darkgreen
+];
+} 
+
+subgraph cluster_883855765 { 
+   	label=AppartenirService
+	labeljust=l
+	fillcolor=white
+	style=filled
+   
+   AppartenirService121729986XXXadd497076308[
+	label="+ add()"
+	style=filled
+	fillcolor=white
+	tooltip="AppartenirService
+
+null"
+	fontcolor=darkgreen
+];
+} 
+} 
+} 
+
+'edges    
+AddProduitToListActivity1243990011XXXaddAllProductsOnList1410995327 -> AppartenirService121729986XXXadd497076308;
+AddProduitToListActivity1243990011XXXaddOnlyOneProductOnList381350486 -> AppartenirService121729986XXXadd497076308;
+AddProduitToListActivity1243990011XXXonClick2666181 -> AddProduitToListActivity1243990011XXXaddAllProductsOnList1410995327;
+AddProduitToListActivity1243990011XXXonClick2666181 -> AddProduitToListActivity1243990011XXXaddOnlyOneProductOnList381350486;
+AddProduitToListActivity1243990011XXXonClick2666181 -> AddProduitToListActivity1243990011XXXhasChecked2666181;
+AppartenirService121729986XXXadd497076308 -> AppartenirRepository886306589XXXaddAppartenir1033387535;
+    
+}
+@enduml

@@ -1,0 +1,319 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "nc.unc.ktrochon.pocketlist.entity.ListProduit",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_115946 { 
+   	label=unc
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_949228562 { 
+   	label=ktrochon
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AddProduitToListActivity1243990011[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AddProduitToListActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   adapter: AddProduitAdapter [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   appartenirService: AppartenirService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   button: FloatingActionButton [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   list: List&lt;Produit&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   numeroList: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   produitList: List&lt;Produit&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   services: ProduitServices [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addAllProductsOnList(view: View, produitList: List&lt;Produit&gt;, numeroList: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addOnlyOneProductOnList(view: View, numeroList: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hasChecked(view: View): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onClick(view: View)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+AppartenirService121729986[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AppartenirService</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   listServices: ListServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   produitServices: ProduitServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   repository: AppartenirRepository [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ add(context: Context, numeroListe: int, numeroProduit: int, quantity: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deleteList(context: Context, numeroListe: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deleteProductInList(context: Context, numeroProduit: int, numeroListe: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAllAppartenir(context: Context, numeroListe: int): List&lt;Appartenir&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAppartenir(context: Context, numeroListe: int, numeroProduit: int): Appartenir</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateProductInListe(context: Context, numeroListe: int, numeroProduit: int, nouveauNumeroProduit: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ updateQuantity(context: Context, numeroListe: int, numeroProduit: int, newQuantity: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DetailsProduitActivity1243990011[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DetailsProduitActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   appartenirService: AppartenirService [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   category: EditText [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   categoryProduit: CategoryProduit [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   categoryView: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   description: EditText [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   descriptionView: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   listServices: ListServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   nomProduitView: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   produit: Produit [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   produitIndex: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   produitServices: ProduitServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   quantity: EditText [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   quantityView: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   services: CategoryServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   title: EditText [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ sauvegarderProduit(view: View)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ListProduit165667126[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ListProduit</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ListProduitActivity1243990011[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ListProduitActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   adapter: ProduitAdapter [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   appartenir: List&lt;Appartenir&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   category: List&lt;CategoryProduit&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   caterogyServices: CategoryServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   listProduit: ListProduit [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   listServices: ListServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   produitServices: ProduitServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   produits: List&lt;Produit&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   services: AppartenirService [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ onClick(view: View)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showNoteDetail(produitIndex: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ListProduitAdpter1282035804[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ListProduitAdpter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   itemClickListener: OnClickListener [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   lists: List&lt;ListProduit&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ onBindViewHolder(holder: ViewHolder, position: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreateViewHolder(parent: ViewGroup, viewType: int): ViewHolder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ListProduitDetailsActivity1243990011[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ListProduitDetailsActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   editText: EditText [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   holdTitle: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   index: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   listProduit: ListProduit [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   services: ListServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   textView: TextView [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ sauvegarderListe(view: View)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ supprimerListe(view: View)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ListServices121729986[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ListServices</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   listProduit: ListProduit [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   repository: ListRepository [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ deleteList(context: Context, ListProduit: ListProduit)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getAllList(context: Context): List&lt;ListProduit&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getListProduitByName(context: Context, title: String): ListProduit</TD></TR>
+<TR><TD ALIGN="LEFT" >+ miseAJourListProduit(context: Context, ListProduit: ListProduit, title: String)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MainActivity1243990011[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MainActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   adapter: ListProduitAdpter [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   maListeProduit: List&lt;ListProduit&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   services: ListServices [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ ajouterListe(view: View)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hasChecked(view: View): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onClick(view: View)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showListDetail(position: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showProduitDetail(maListeIndex: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+AddProduitToListActivity1243990011 -> AppartenirService121729986[label="appartenirService
+[0..1]"];
+AppartenirService121729986 -> ListServices121729986[label="listServices
+[0..1]"];
+DetailsProduitActivity1243990011 -> AppartenirService121729986[label="appartenirService
+[0..1]"];
+DetailsProduitActivity1243990011 -> ListServices121729986[label="listServices
+[0..1]"];
+ListProduitActivity1243990011 -> AppartenirService121729986[label="services
+[0..1]"];
+ListProduitActivity1243990011 -> ListProduit165667126[label="listProduit
+[0..1]"];
+ListProduitActivity1243990011 -> ListServices121729986[label="listServices
+[0..1]"];
+ListProduitAdpter1282035804 -> ListProduit165667126[label="lists
+[0..*]"];
+ListProduitDetailsActivity1243990011 -> ListProduit165667126[label="listProduit
+[0..1]"];
+ListProduitDetailsActivity1243990011 -> ListServices121729986[label="services
+[0..1]"];
+ListServices121729986 -> ListProduit165667126[label="listProduit
+[0..1]"];
+MainActivity1243990011 -> ListProduit165667126[label="maListeProduit
+[0..*]"];
+MainActivity1243990011 -> ListProduitAdpter1282035804[label="adapter
+[0..1]"];
+MainActivity1243990011 -> ListServices121729986[label="services
+[0..1]"];
+    
+}
+@enduml

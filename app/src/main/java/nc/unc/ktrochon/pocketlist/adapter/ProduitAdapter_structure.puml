@@ -1,0 +1,197 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "nc.unc.ktrochon.pocketlist.adapter.ProduitAdapter",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_115946 { 
+   	label=unc
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_949228562 { 
+   	label=ktrochon
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   Appartenir165667126[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Appartenir</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   key_app: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   key_list: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   key_prod: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   quantite: int [1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+CategoryProduit165667126[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)CategoryProduit</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   categoryId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   categoryName: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ListProduitActivity1243990011[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ListProduitActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   adapter: ProduitAdapter [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   appartenir: List&lt;Appartenir&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   category: List&lt;CategoryProduit&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   caterogyServices: CategoryServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   listProduit: ListProduit [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   listServices: ListServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   produitServices: ProduitServices [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   produits: List&lt;Produit&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   services: AppartenirService [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ onClick(view: View)</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ showNoteDetail(produitIndex: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Produit165667126[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Produit</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   category: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   categoryName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   description: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   nomProduit: String [0..1]</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ProduitAdapter1282035804[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ProduitAdapter</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   appartenirs: List&lt;Appartenir&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   categoryProduits: List&lt;CategoryProduit&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   itemClickListener: OnClickListener [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   produits: List&lt;Produit&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ onBindViewHolder(holder: ViewHolder, position: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreateViewHolder(parent: ViewGroup, viewType: int): ViewHolder</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+ListProduitActivity1243990011 -> ProduitAdapter1282035804[label="adapter
+[0..1]"];
+ProduitAdapter1282035804 -> Appartenir165667126[label="appartenirs
+[0..*]"];
+ProduitAdapter1282035804 -> CategoryProduit165667126[label="categoryProduits
+[0..*]"];
+ProduitAdapter1282035804 -> Produit165667126[label="produits
+[0..*]"];
+    
+}
+@enduml
