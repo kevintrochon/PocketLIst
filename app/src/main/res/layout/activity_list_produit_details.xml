@@ -29,7 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/nameList"
         android:layout_marginTop="9dp"
-        android:onClick="sauvegarderListe"
         android:src="@drawable/ic_save_white_24dp"
         app:backgroundTint="@color/cardview_dark_background"
         app:tint="@color/white" />

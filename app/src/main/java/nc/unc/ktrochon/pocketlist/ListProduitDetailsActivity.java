@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -33,9 +34,15 @@ public class ListProduitDetailsActivity extends AppCompatActivity {
         textView = findViewById(R.id.nameList);
         textView.setText(listProduit.getName());
         holdTitle = textView.getText().toString();
+        ImageButton imageButton = findViewById(R.id.sauvegarder);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+               sauvegarderListe();
+            }
+        });
     }
 
-    public void sauvegarderListe(View view){
+    public void sauvegarderListe(){
         editText = findViewById(R.id.nameList);
         ListProduit maListe = services.getListProduitByName(this,holdTitle);
         if (maListe.getName() == null){

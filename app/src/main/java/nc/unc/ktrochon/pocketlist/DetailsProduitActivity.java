@@ -118,6 +118,4 @@ public class DetailsProduitActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
-
 }

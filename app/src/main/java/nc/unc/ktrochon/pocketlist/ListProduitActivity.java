@@ -50,7 +50,6 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
 
         produits = produitServices.getAllProduit(this, this.listProduit.getId());
 
-
         appartenir = services.getAllAppartenir(this, this.listProduit.getId());
         category = caterogyServices.getAllCategory(this);
 
