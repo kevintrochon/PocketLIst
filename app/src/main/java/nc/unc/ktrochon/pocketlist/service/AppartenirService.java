@@ -42,7 +42,7 @@ public class AppartenirService {
 
     public void updateQuantity(Context context,int numeroListe, int numeroProduit, int newQuantity){
         repository = new AppartenirRepository(context);
-        repository.updateProductList(numeroListe,numeroProduit,newQuantity);
+        repository.updateQuantity(numeroListe,numeroProduit,newQuantity);
     }
 
     public void deleteProductInList(Context context ,int numeroProduit,int numeroListe){

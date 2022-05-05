@@ -102,7 +102,7 @@ public class AppartenirRepository extends AppCompatActivity {
 
         String query = "UPDATE appartenir SET quantite = "
                 + newQuantity
-                +"WHERE key_prod = "
+                +" WHERE key_prod = "
                 +numeroProduit
                 +" AND key_liste ="
                 + numeroListe;
@@ -138,7 +138,7 @@ public class AppartenirRepository extends AppCompatActivity {
     public void deletedProductInList(int numeroProduit, int numeroListe){
         String query = "DELETE FROM appartenir WHERE key_liste ="
                 + numeroListe
-                +"AND key_prod = "
+                +" AND key_prod = "
                 +numeroProduit ;
 
         try {

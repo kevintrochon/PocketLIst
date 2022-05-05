@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import nc.unc.ktrochon.pocketlist.entity.ListProduit;
+import nc.unc.ktrochon.pocketlist.service.AppartenirService;
 import nc.unc.ktrochon.pocketlist.service.ListServices;
 
 public class ListProduitDetailsActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class ListProduitDetailsActivity extends AppCompatActivity {
     TextView textView;
     EditText editText;
     private ListServices services = new ListServices();
+    private AppartenirService appartenirService = new AppartenirService();
     private String holdTitle;
 
     @Override
@@ -58,7 +60,10 @@ public class ListProduitDetailsActivity extends AppCompatActivity {
 
     public void supprimerListe(View view){
         ListProduit listProduit = services.getListProduitByName(this,textView.getText().toString());
+        //Suppression de la table liste.
         services.deleteList(this,listProduit);
+        //Suppression de la liste dans la table appartenir.
+        appartenirService.deleteList(this, listProduit.getId());
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
     }

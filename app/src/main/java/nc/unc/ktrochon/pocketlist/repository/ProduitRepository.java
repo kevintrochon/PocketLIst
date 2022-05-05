@@ -119,10 +119,19 @@ public class ProduitRepository extends AppCompatActivity {
         }
     }
 
-    public void updateNomProduit(Produit produit,String nom) {
-        String query = "UPDATE produit SET nom ='"
-                + nom
-                +"' WHERE nom = '"
+    /*
+    nom VARCHAR(50) UNIQUE NOT NULL, "
+                +" description VARCHAR(150), "
+                +" key_cat INTEGER, "
+     */
+    public void updateNomProduit(Produit produit,Produit newProduit) {
+        String query = "UPDATE produit SET nom = '"
+                + newProduit.getNomProduit()
+                +"', description = '"
+                + newProduit.getDescription()
+                +"', key_cat = "
+                + newProduit.getCategory()
+                +" WHERE nom = '"
                 + produit.getNomProduit()
                 +"'";
 

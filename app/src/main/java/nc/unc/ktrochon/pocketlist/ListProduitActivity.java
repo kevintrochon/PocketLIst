@@ -47,15 +47,9 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         Gson gson = new Gson();
         ListProduit listProduit = gson.fromJson(getIntent().getStringExtra("listProduits"),ListProduit.class);
         this.listProduit = listServices.getListProduitByName(this,listProduit.getName());
-
         produits = produitServices.getAllProduit(this, this.listProduit.getId());
-
         appartenir = services.getAllAppartenir(this, this.listProduit.getId());
         category = caterogyServices.getAllCategory(this);
-
-
-        produits = produitServices.getAllProduit(this,listProduit.getId());
-
         adapter = new ProduitAdapter(produits, this,category,appartenir);
 
         RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);
@@ -77,12 +71,16 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
     public void showNoteDetail(int produitIndex){
         Produit produit = produits.get(produitIndex);
         Appartenir a = appartenir.get(produitIndex);
+        List<ListProduit> listProduits = listServices.getAllList(this);
+        ListProduit lp = listProduits.get(a.getKey_list()-1);
         Intent intent = new Intent(this, DetailsProduitActivity.class);
         Gson json = new Gson();
         String myJSON = json.toJson(produit);
+        String listProduitJSON = json.toJson(lp);
         intent.putExtra("produits",myJSON);
         intent.putExtra("produitIndex",produitIndex);
         intent.putExtra("quantiteProduit",a.getQuantite());
+        intent.putExtra("liste_de_produit",listProduitJSON);
         startActivity(intent);
     }
 

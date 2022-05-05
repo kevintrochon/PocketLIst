@@ -2,6 +2,7 @@ package nc.unc.ktrochon.pocketlist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +19,7 @@ import com.google.gson.Gson;
 
 import java.util.List;
 
+import nc.unc.ktrochon.pocketlist.entity.Appartenir;
 import nc.unc.ktrochon.pocketlist.entity.CategoryProduit;
 import nc.unc.ktrochon.pocketlist.entity.ListProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
@@ -28,19 +31,21 @@ import nc.unc.ktrochon.pocketlist.service.ProduitServices;
 public class DetailsProduitActivity extends AppCompatActivity {
     Produit produit;
     int produitIndex = -1;
+    ListProduit listProduit;
     TextView nomProduitView;
     TextView descriptionView;
     TextView categoryView;
     TextView quantityView;
     EditText title;
     EditText description;
-    EditText category;
+    Spinner category;
     EditText quantity;
     CategoryServices services = new CategoryServices();
     ProduitServices produitServices = new ProduitServices();
     private AppartenirService appartenirService = new AppartenirService();
     private ListServices listServices = new ListServices();
     CategoryProduit categoryProduit;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +53,13 @@ public class DetailsProduitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details_produit);
         Gson gson = new Gson();
         produit = gson.fromJson(getIntent().getStringExtra("produits"), Produit.class);
+        listProduit = gson.fromJson(getIntent().getStringExtra("liste_de_produit"),ListProduit.class);
         produitIndex = getIntent().getIntExtra("produitIndex",-1);
         nomProduitView = findViewById(R.id.title2);
         descriptionView = findViewById(R.id.text2);
         //categoryView = findViewById(R.id.edit_produit);
         quantityView = findViewById(R.id.quantite);
-        Spinner spinner = (Spinner) findViewById(R.id.edit_produit);
+        spinner = (Spinner) findViewById(R.id.edit_produit);
         //categoryProduit = services.getCategoryProduitByName(this,""+produit.getCategory());
         nomProduitView.setText(produit.getNomProduit());
         descriptionView.setText(produit.getDescription());
@@ -89,32 +95,52 @@ public class DetailsProduitActivity extends AppCompatActivity {
 
             }
         });
+
+        ImageButton deleteButton = findViewById(R.id.button_delete_produit);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteProductInList();
+            }
+        });
     }
 
+
     public void sauvegarderProduit(View view){
+
         title = findViewById(R.id.title2);
         description = findViewById(R.id.text2);
-        //category = findViewById(R.id.edit_produit);
+        category = findViewById(R.id.edit_produit);
         quantity = findViewById(R.id.quantite);
-        //categoryProduit = services.getCategoryProduitByName(this,category.getText().toString());
-        nomProduitView.setText(title.getText());
-        quantityView.setText(quantity.getText());
-        produit.setNomProduit(title.getText().toString());
-        produit.setDescription(categoryProduit.getCategoryName());
-        produit.setCategory(categoryProduit.getCategoryId());
-        Produit p = produitServices.getProduitByName(this,produit.getNomProduit());
-        String listProduitName = getIntent().getStringExtra("listeProduitName");
-        ListProduit listProduit = listServices.getListProduitByName(this,listProduitName);
+        Produit p = new Produit();
+        p.setId(produitIndex);
+        p.setNomProduit(title.getText().toString());
+        p.setDescription(description.getText().toString());
+        categoryProduit = services.getCategoryProduitByName(this,spinner.getAdapter().getItem(produit.getCategory()).toString());
+        categoryProduit.setCategoryId(categoryProduit.getCategoryId()-1);
+        List<CategoryProduit> c = services.getAllCategory(this);
+        categoryProduit.setCategoryName(c.get(categoryProduit.getCategoryId()-1).getCategoryName());
+        p.setCategory(categoryProduit.getCategoryId());
+        p.setCategoryName(categoryProduit.getCategoryName());
         if (p.getNomProduit() == null){
             produitServices.addProduit(this,produit);
         }else{
-            produitServices.miseAJourNomProduit(this,produit,title.getText().toString());
+            produitServices.miseAJourNomProduit(this,produit,p);
+            appartenirService.updateQuantity(this,listProduit.getId(),p.getId()+1,Integer.parseInt(quantity.getText().toString()));
         }
-        p = produitServices.getProduitByName(this,produit.getNomProduit());
-
-        appartenirService.add(this,listProduit.getId(),p.getId(),Integer.parseInt(quantity.getText().toString()));
-
         Intent intent = new Intent(this, ListProduitActivity.class);
+        Gson gson = new Gson();
+        String listProduitJSON = gson.toJson(listProduit);
+        intent.putExtra("listProduits",listProduitJSON);
+        startActivity(intent);
+    }
+
+    public void deleteProductInList(){
+        appartenirService.deleteProductInList(this,produit.getId(),listProduit.getId());
+        Intent intent = new Intent(this,ListProduitActivity.class);
+        Gson gson = new Gson();
+        String listProduitJSON = gson.toJson(listProduit);
+        intent.putExtra("listProduits",listProduitJSON);
         startActivity(intent);
     }
 
