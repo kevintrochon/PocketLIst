@@ -52,11 +52,9 @@ public class ListRepository extends AppCompatActivity {
     }
 
     public void addListe(ListProduit listProduit) {
-        String query = "INSERT INTO liste (Nom,key_prod) VALUES ('"
+        String query = "INSERT INTO liste (Nom) VALUES ('"
                 + listProduit.getName().replace("'","''")
-                +"',"
-                + listProduit.getId()+
-                ")";
+                + "')";
 
         try {
             connexion.getWritableDatabase().execSQL(query);
