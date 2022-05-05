@@ -4,7 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.util.Log;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +16,7 @@ import java.util.List;
 import nc.unc.ktrochon.pocketlist.DAO.ListDAO;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
 
-public class ProduitRepository {
+public class ProduitRepository extends AppCompatActivity {
 
     private ListDAO connexion;
 
@@ -86,14 +90,33 @@ public class ProduitRepository {
                 +produit.getCategory()
                 + ")";
 
-        connexion.getWritableDatabase().execSQL(query);
+        try {
+            connexion.getWritableDatabase().execSQL(query);
+        }catch (SQLException e) {
+            Toast.makeText(getApplicationContext(), "Erreur d'ajout de produit!"
+                    ,Toast.LENGTH_SHORT).show();
+        }finally {
+            if (connexion !=null) {
+                connexion.close();
+            }
+        }
     }
 
     public void deleteProduit(Produit produit){
         String query = "DELETE FROM produit WHERE nom = '"
                 + produit.getNomProduit()
                 +"'";
-        connexion.getWritableDatabase().execSQL(query);
+
+        try {
+            connexion.getWritableDatabase().execSQL(query);
+        }catch (SQLException e) {
+            Toast.makeText(getApplicationContext(), "Erreur de suppression de produit!"
+                    ,Toast.LENGTH_SHORT).show();
+        }finally {
+            if (connexion !=null) {
+                connexion.close();
+            }
+        }
     }
 
     public void updateNomProduit(Produit produit,String nom) {
@@ -102,7 +125,17 @@ public class ProduitRepository {
                 +"' WHERE nom = '"
                 + produit.getNomProduit()
                 +"'";
-        connexion.getWritableDatabase().execSQL(query);
+
+        try {
+            connexion.getWritableDatabase().execSQL(query);
+        }catch (SQLException e) {
+            Toast.makeText(getApplicationContext(), "Erreur de mise à jour du produit!"
+                    ,Toast.LENGTH_SHORT).show();
+        }finally {
+            if (connexion !=null) {
+                connexion.close();
+            }
+        }
     }
 
     public void updateDescriptionProduit(Produit produit,String newDescription) {
@@ -111,7 +144,17 @@ public class ProduitRepository {
                 +"' WHERE nom = '"
                 + produit.getNomProduit()
                 +"'";
-        connexion.getWritableDatabase().execSQL(query);
+
+        try {
+            connexion.getWritableDatabase().execSQL(query);
+        }catch (SQLException e) {
+            Toast.makeText(getApplicationContext(), "Erreur de mise à jour du produit!"
+                    ,Toast.LENGTH_SHORT).show();
+        }finally {
+            if (connexion !=null) {
+                connexion.close();
+            }
+        }
     }
 
 

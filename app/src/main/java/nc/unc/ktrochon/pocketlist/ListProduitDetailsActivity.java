@@ -21,7 +21,7 @@ public class ListProduitDetailsActivity extends AppCompatActivity {
     TextView textView;
     EditText editText;
     private ListServices services = new ListServices();
-     private String holdTitle;
+    private String holdTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -3,6 +3,10 @@ package nc.unc.ktrochon.pocketlist.repository;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +14,7 @@ import java.util.List;
 import nc.unc.ktrochon.pocketlist.DAO.ListDAO;
 import nc.unc.ktrochon.pocketlist.entity.Appartenir;
 
-public class AppartenirRepository {
+public class AppartenirRepository extends AppCompatActivity {
 
     private ListDAO connexion;
     List<Appartenir> list;
@@ -61,7 +65,16 @@ public class AppartenirRepository {
                 + quantity
                 + ")";
 
-        connexion.getWritableDatabase().execSQL(query);
+        try {
+            connexion.getWritableDatabase().execSQL(query);
+        }catch (SQLException e) {
+            Toast.makeText(getApplicationContext(), "Erreur d'ajout dans la liste!"
+                    ,Toast.LENGTH_SHORT).show();
+        }finally {
+            if (connexion !=null) {
+                connexion.close();
+            }
+        }
     }
 
     public void updateProductList(int numeroListe, int numeroProduit, int newNumeroProduit) {
@@ -73,7 +86,16 @@ public class AppartenirRepository {
                 +" AND key_liste ="
                 + numeroListe;
 
-        connexion.getWritableDatabase().execSQL(query);
+        try {
+            connexion.getWritableDatabase().execSQL(query);
+        }catch (SQLException e) {
+            Toast.makeText(getApplicationContext(), "Erreur de mise à jour dans la liste!"
+                    ,Toast.LENGTH_SHORT).show();
+        }finally {
+            if (connexion !=null) {
+                connexion.close();
+            }
+        }
     }
 
     public void updateQuantity(int numeroListe, int numeroProduit, int newQuantity) {
@@ -85,14 +107,32 @@ public class AppartenirRepository {
                 +" AND key_liste ="
                 + numeroListe;
 
-        connexion.getWritableDatabase().execSQL(query);
+        try {
+            connexion.getWritableDatabase().execSQL(query);
+        }catch (SQLException e) {
+            Toast.makeText(getApplicationContext(), "Erreur de mise à jour dans la liste!"
+                    ,Toast.LENGTH_SHORT).show();
+        }finally {
+            if (connexion !=null) {
+                connexion.close();
+            }
+        }
     }
 
     public void deletedList(int numeroListe){
         String query = "DELETE FROM appartenir WHERE key_liste ="
                 + numeroListe;
 
-        connexion.getWritableDatabase().execSQL(query);
+        try {
+            connexion.getWritableDatabase().execSQL(query);
+        }catch (SQLException e) {
+            Toast.makeText(getApplicationContext(), "Erreur de suppression de la liste!"
+                    ,Toast.LENGTH_SHORT).show();
+        }finally {
+            if (connexion !=null) {
+                connexion.close();
+            }
+        }
     }
 
     public void deletedProductInList(int numeroProduit, int numeroListe){
@@ -101,7 +141,16 @@ public class AppartenirRepository {
                 +"AND key_prod = "
                 +numeroProduit ;
 
-        connexion.getWritableDatabase().execSQL(query);
+        try {
+            connexion.getWritableDatabase().execSQL(query);
+        }catch (SQLException e) {
+            Toast.makeText(getApplicationContext(), "Erreur de suppression dans la liste!"
+                    ,Toast.LENGTH_SHORT).show();
+        }finally {
+            if (connexion !=null) {
+                connexion.close();
+            }
+        }
     }
 
     @SuppressLint("Range")
