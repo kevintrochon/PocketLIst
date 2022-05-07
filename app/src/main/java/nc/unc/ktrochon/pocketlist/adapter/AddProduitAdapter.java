@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import nc.unc.ktrochon.pocketlist.AddProduitToListActivity;
@@ -20,10 +21,12 @@ public class AddProduitAdapter extends RecyclerView.Adapter<AddProduitAdapter.Vi
 
     List<Produit> produits;
     View.OnClickListener itemClickListener;
+    List<Integer> positions;
 
     public AddProduitAdapter(List<Produit> list, AddProduitToListActivity itemClickListener) {
         this.produits = list;
         this.itemClickListener = itemClickListener;
+        positions = new ArrayList<>();
     }
 
     @NonNull
@@ -43,6 +46,7 @@ public class AddProduitAdapter extends RecyclerView.Adapter<AddProduitAdapter.Vi
         holder.checkBox.setOnCheckedChangeListener(
                 (buttonView, isChecked) -> {
                     holder.checkBox.setSelected(isChecked);
+                    positions.add(position);
                 }
         );
     }
@@ -59,5 +63,9 @@ public class AddProduitAdapter extends RecyclerView.Adapter<AddProduitAdapter.Vi
         CardView cardView = itemView.findViewById(R.id.card_view_add);
         TextView titleView = cardView.findViewById(R.id.produit_name);
         CheckBox checkBox = cardView.findViewById(R.id.check_add_produit);
+    }
+
+    public List<Integer> getPositions(){
+        return positions;
     }
 }

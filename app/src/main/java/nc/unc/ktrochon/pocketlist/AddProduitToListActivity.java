@@ -4,35 +4,47 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.List;
 
 import nc.unc.ktrochon.pocketlist.adapter.AddProduitAdapter;
 import nc.unc.ktrochon.pocketlist.adapter.ListProduitAdpter;
+import nc.unc.ktrochon.pocketlist.entity.Appartenir;
+import nc.unc.ktrochon.pocketlist.entity.ListProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
 import nc.unc.ktrochon.pocketlist.service.AppartenirService;
+import nc.unc.ktrochon.pocketlist.service.ListServices;
 import nc.unc.ktrochon.pocketlist.service.ProduitServices;
 
 public class AddProduitToListActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ProduitServices services = new ProduitServices();
     private AppartenirService appartenirService = new AppartenirService();
+    private ListServices listServices = new ListServices();
     private AddProduitAdapter adapter;
     private FloatingActionButton button;
     private List<Produit> list;
     private List<Produit> produitList;
     private int numeroList;
+    private CheckBox checkBox;
+    private List<Integer> positions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_produit_to_list);
+        checkBox = findViewById(R.id.check_add_produit);
         button = findViewById(R.id.create_list_prod);
         button.setOnClickListener(this);
         button.show();
@@ -51,22 +63,32 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
             Log.i("Add_product :","Add one product on the shopping list.");
             addOnlyOneProductOnList(view,numeroList);
         }
-        else{
+        else if(view.getId() == R.id.create_list_prod){
             // Add all products on the shopping list.
             Log.i("Add_product :","Add all products on the shopping list where the checkbox is checked.");
-            for (Produit p:
-                 list) {
-                if(hasChecked(findViewById(R.id.check_add_produit))){
-                    this.produitList.add(p);
-                }
+            positions = adapter.getPositions();
+            this.produitList = new ArrayList<>();
+            for (Integer i:positions
+                 ) {
+                produitList.add(list.get(i));
             }
             addAllProductsOnList(view,this.produitList,numeroList);
         }
+        else{
+
+        }
+        Intent intent = new Intent(this,ListProduitActivity.class);
+        List<ListProduit> listProduitList =  listServices.getAllList(this);
+        ListProduit listProduit = listProduitList.get(numeroList-1);
+        Gson gson = new Gson();
+        String malist = gson.toJson(listProduit);
+        intent.putExtra("listProduits",malist);
+        startActivity(intent);
     }
 
     public boolean hasChecked(View view){
         boolean check = false;
-        CheckBox checkBox = (CheckBox)view.findViewById(R.id.check_add_produit);
+        CheckBox checkBox = view.findViewById(R.id.check_add_produit);
         if (checkBox.isChecked()){
             check = true;
         }
