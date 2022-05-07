@@ -43,7 +43,7 @@ public class ProduitAdapter extends RecyclerView.Adapter<ProduitAdapter.ViewHold
     public void onBindViewHolder(ProduitAdapter.ViewHolder  holder,int position) {
         Produit produit = produits.get(position);
         Appartenir appartenir = appartenirs.get(position);
-        CategoryProduit categoryProduit = categoryProduits.get(position);
+        CategoryProduit categoryProduit = categoryProduits.get(produit.getCategory()-1);
         holder.cardView.setOnClickListener(itemClickListener);
         holder.cardView.setTag(position);
         holder.titleView.setText(produit.getNomProduit());

@@ -116,10 +116,7 @@ public class DetailsProduitActivity extends AppCompatActivity {
         p.setId(produitIndex);
         p.setNomProduit(title.getText().toString());
         p.setDescription(description.getText().toString());
-        categoryProduit = services.getCategoryProduitByName(this,spinner.getAdapter().getItem(produit.getCategory()).toString());
-        categoryProduit.setCategoryId(categoryProduit.getCategoryId()-1);
-        List<CategoryProduit> c = services.getAllCategory(this);
-        categoryProduit.setCategoryName(c.get(categoryProduit.getCategoryId()-1).getCategoryName());
+        categoryProduit = (CategoryProduit) spinner.getSelectedItem();
         p.setCategory(categoryProduit.getCategoryId());
         p.setCategoryName(categoryProduit.getCategoryName());
         if (p.getNomProduit() == null){
