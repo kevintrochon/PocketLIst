@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 
@@ -14,13 +13,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Hashtable;
 import java.util.List;
 
 import nc.unc.ktrochon.pocketlist.adapter.AddProduitAdapter;
-import nc.unc.ktrochon.pocketlist.adapter.ListProduitAdpter;
-import nc.unc.ktrochon.pocketlist.entity.Appartenir;
 import nc.unc.ktrochon.pocketlist.entity.ListProduit;
 import nc.unc.ktrochon.pocketlist.entity.Produit;
 import nc.unc.ktrochon.pocketlist.service.AppartenirService;
@@ -29,9 +24,9 @@ import nc.unc.ktrochon.pocketlist.service.ProduitServices;
 
 public class AddProduitToListActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ProduitServices services = new ProduitServices();
-    private AppartenirService appartenirService = new AppartenirService();
-    private ListServices listServices = new ListServices();
+    private final ProduitServices services = new ProduitServices();
+    private final AppartenirService appartenirService = new AppartenirService();
+    private final ListServices listServices = new ListServices();
     private AddProduitAdapter adapter;
     private FloatingActionButton button;
     private List<Produit> list;
@@ -59,13 +54,9 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View view) {
         if (view.getTag() != null && !hasChecked(view)){
-            // Add one product on the shopping list.
-            Log.i("Add_product :","Add one product on the shopping list.");
             addOnlyOneProductOnList(view,numeroList);
         }
         else if(view.getId() == R.id.create_list_prod){
-            // Add all products on the shopping list.
-            Log.i("Add_product :","Add all products on the shopping list where the checkbox is checked.");
             positions = adapter.getPositions();
             this.produitList = new ArrayList<>();
             for (Integer i:positions
@@ -73,9 +64,6 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
                 produitList.add(list.get(i));
             }
             addAllProductsOnList(view,this.produitList,numeroList);
-        }
-        else{
-
         }
         Intent intent = new Intent(this,ListProduitActivity.class);
         List<ListProduit> listProduitList =  listServices.getAllList(this);
