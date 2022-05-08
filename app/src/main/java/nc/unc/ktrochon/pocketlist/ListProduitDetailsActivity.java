@@ -42,6 +42,14 @@ public class ListProduitDetailsActivity extends AppCompatActivity {
                sauvegarderListe();
             }
         });
+        ImageButton toolBarButton = findViewById(R.id.toolbarButton);
+        toolBarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListProduitDetailsActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void sauvegarderListe(){

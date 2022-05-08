@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 
 import nc.unc.ktrochon.pocketlist.entity.CategoryProduit;
@@ -69,6 +71,16 @@ public class AddProduit extends AppCompatActivity{
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
+            }
+        });
+
+        ImageButton toolBarButton = findViewById(R.id.toolbarButton);
+        toolBarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddProduit.this,AddProduitToListActivity.class);
+                intent.putExtra("numeroDeLaList",numeroListe);
+                startActivity(intent);
             }
         });
 

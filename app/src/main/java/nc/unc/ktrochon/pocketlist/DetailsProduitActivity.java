@@ -99,6 +99,18 @@ public class DetailsProduitActivity extends AppCompatActivity {
                 deleteProductInList();
             }
         });
+
+        ImageButton toolBarButton = findViewById(R.id.toolbarButton);
+        toolBarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailsProduitActivity.this, ListProduitActivity.class);
+                Gson gson = new Gson();
+                String listProduitJSON = gson.toJson(listProduit);
+                intent.putExtra("listProduits",listProduitJSON);
+                startActivity(intent);
+            }
+        });
     }
 
 

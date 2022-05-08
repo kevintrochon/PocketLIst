@@ -10,25 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary" /-->
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/notes_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_produit" />
-
-        <!--ImageButton
-            android:id="@+id/button_ajouter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_white_24dp"
-            android:layout_below="@+id/notes_recycler_view"
-            android:onClick="ajouterProduit"/-->
 
     </RelativeLayout>
 

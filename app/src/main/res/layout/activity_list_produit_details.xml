@@ -11,8 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        app:backgroundTint="#8E8787"
-        app:title="Edition de la liste" />
+        app:backgroundTint="#8E8787">
+
+        <ImageButton
+            android:id="@+id/toolbarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:src="@drawable/ic_retour" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="90dp"
+            android:gravity="center"
+            android:text="Edition de la liste" />
+    </androidx.appcompat.widget.Toolbar>
 
     <EditText
         android:id="@+id/nameList"
