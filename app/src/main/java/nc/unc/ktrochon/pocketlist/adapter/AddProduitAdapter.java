@@ -22,6 +22,8 @@ public class AddProduitAdapter extends RecyclerView.Adapter<AddProduitAdapter.Vi
     List<Produit> produits;
     View.OnClickListener itemClickListener;
     List<Integer> positions;
+    String nomProduit;
+    boolean isCheck;
 
     public AddProduitAdapter(List<Produit> list, AddProduitToListActivity itemClickListener) {
         this.produits = list;
@@ -47,6 +49,8 @@ public class AddProduitAdapter extends RecyclerView.Adapter<AddProduitAdapter.Vi
                 (buttonView, isChecked) -> {
                     holder.checkBox.setSelected(isChecked);
                     positions.add(position);
+                    nomProduit = produit.getNomProduit();
+                    this.isCheck = isChecked;
                 }
         );
     }
@@ -67,5 +71,13 @@ public class AddProduitAdapter extends RecyclerView.Adapter<AddProduitAdapter.Vi
 
     public List<Integer> getPositions(){
         return positions;
+    }
+
+    public String getNomProduit() {
+        return nomProduit;
+    }
+
+    public boolean isCheck() {
+        return isCheck;
     }
 }

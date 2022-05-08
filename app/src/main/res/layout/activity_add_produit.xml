@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        app:title="Edition de produit"/>
+        app:title="Ajout d'un produit"/>
 
     <EditText
-        android:id="@+id/title2"
+        android:id="@+id/nomProduit"
         style="@style/NoteTitleFont"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,40 +22,29 @@
         android:hint="Nom du produit" />
 
     <EditText
-        android:id="@+id/text2"
+        android:id="@+id/descriptionProduit"
         android:layout_width="match_parent"
         android:layout_height="344dp"
-        android:layout_below="@+id/title2"
+        android:layout_below="@+id/nomProduit"
         android:layout_marginTop="87dp"
         android:hint="Description du produit" />
 
     <Spinner
-        android:id="@+id/edit_produit"
-        android:layout_width="280dp"
-        android:layout_height="90dp"
-        android:layout_below="@+id/title2"
+        android:id="@+id/spinnerCategory"
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:layout_below="@+id/nomProduit"
         android:layout_marginTop="2dp"
+        android:layout_weight="1"
         android:hint="Catégorie du produit"
-        android:spinnerMode="dropdown"
-        android:layout_weight="1" />
+        android:spinnerMode="dropdown" />
 
-    <EditText
-        android:id="@+id/quantite"
-        style="@style/NoteTitleFont"
-        android:layout_width="128dp"
-        android:layout_height="90dp"
-        android:layout_below="@+id/title2"
-        android:layout_alignRight="@+id/title2"
-        android:layout_marginTop="0dp"
-        android:layout_marginRight="0dp"
-        android:inputType="number"
-        android:text="Quantite" />
 
     <ImageButton
-        android:id="@+id/sauvegarder_produit"
+        android:id="@+id/save_produit"
         android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text2"
+        android:layout_below="@+id/descriptionProduit"
         android:layout_marginTop="9dp"
         android:onClick="sauvegarderProduit"
         android:src="@drawable/ic_save_white_24dp"
@@ -66,8 +55,8 @@
         android:id="@+id/button_delete_produit"
         android:layout_width="205dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text2"
-        android:layout_alignRight="@+id/text2"
+        android:layout_below="@+id/descriptionProduit"
+        android:layout_alignRight="@+id/descriptionProduit"
         android:layout_marginTop="9dp"
         android:src="@drawable/ic_delete_white_24dp"
         android:text="Supprimer"

@@ -102,9 +102,9 @@ public class ProduitRepository extends AppCompatActivity {
         }
     }
 
-    public void deleteProduit(Produit produit){
+    public void deleteProduit(String nom){
         String query = "DELETE FROM produit WHERE nom = '"
-                + produit.getNomProduit()
+                + nom
                 +"'";
 
         try {
