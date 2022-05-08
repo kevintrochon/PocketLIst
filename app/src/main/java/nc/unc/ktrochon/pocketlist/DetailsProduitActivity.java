@@ -34,7 +34,6 @@ public class DetailsProduitActivity extends AppCompatActivity {
     ListProduit listProduit;
     TextView nomProduitView;
     TextView descriptionView;
-    TextView categoryView;
     TextView quantityView;
     EditText title;
     EditText description;
@@ -57,13 +56,10 @@ public class DetailsProduitActivity extends AppCompatActivity {
         produitIndex = getIntent().getIntExtra("produitIndex",-1);
         nomProduitView = findViewById(R.id.title2);
         descriptionView = findViewById(R.id.text2);
-        //categoryView = findViewById(R.id.edit_produit);
         quantityView = findViewById(R.id.quantite);
         spinner = (Spinner) findViewById(R.id.edit_produit);
-        //categoryProduit = services.getCategoryProduitByName(this,""+produit.getCategory());
         nomProduitView.setText(produit.getNomProduit());
         descriptionView.setText(produit.getDescription());
-        //categoryView.setText(categoryProduit.getCategoryName());
         quantityView.setText(String.valueOf(getIntent().getIntExtra("quantiteProduit",-1)));
 
         // Spinner Drop down elements
@@ -133,7 +129,8 @@ public class DetailsProduitActivity extends AppCompatActivity {
     }
 
     public void deleteProductInList(){
-        appartenirService.deleteProductInList(this,produit.getId(),listProduit.getId());
+        quantity = findViewById(R.id.quantite);
+        appartenirService.deleteProductInList(this,produit.getId(),listProduit.getId(),Integer.parseInt(this.quantity.getText().toString()));
         Intent intent = new Intent(this,ListProduitActivity.class);
         Gson gson = new Gson();
         String listProduitJSON = gson.toJson(listProduit);

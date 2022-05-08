@@ -135,11 +135,13 @@ public class AppartenirRepository extends AppCompatActivity {
         }
     }
 
-    public void deletedProductInList(int numeroProduit, int numeroListe){
+    public void deletedProductInList(int numeroProduit, int numeroListe,int quantite){
         String query = "DELETE FROM appartenir WHERE key_liste ="
                 + numeroListe
                 +" AND key_prod = "
-                +numeroProduit ;
+                +numeroProduit
+                +" AND quantite = "
+                + quantite;
 
         try {
             connexion.getWritableDatabase().execSQL(query);
