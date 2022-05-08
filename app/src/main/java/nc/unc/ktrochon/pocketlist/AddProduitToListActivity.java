@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
@@ -70,6 +71,20 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
         RecyclerView recyclerView = findViewById(R.id.add_produit_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(adapter);
+
+        ImageButton toolBarButton = findViewById(R.id.toolbarButton);
+        toolBarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddProduitToListActivity.this,ListProduitActivity.class);
+                List<ListProduit> listProduitList =  listServices.getAllList(AddProduitToListActivity.this);
+                ListProduit listProduit = listProduitList.get(numeroList-1);
+                Gson gson = new Gson();
+                String malist = gson.toJson(listProduit);
+                intent.putExtra("listProduits",malist);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

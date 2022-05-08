@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
@@ -55,6 +56,16 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         RecyclerView recyclerView = findViewById(R.id.notes_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         recyclerView.setAdapter(adapter);
+
+        ImageButton toolBarButton = findViewById(R.id.toolbarButton);
+        toolBarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ListProduitActivity.this,MainActivity.class);
+                intent.putExtra("numeroDeLaList",listProduit.getId());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
