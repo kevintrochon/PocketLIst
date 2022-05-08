@@ -119,7 +119,7 @@ public class DetailsProduitActivity extends AppCompatActivity {
             produitServices.addProduit(this,produit);
         }else{
             produitServices.miseAJourNomProduit(this,produit,p);
-            appartenirService.updateQuantity(this,listProduit.getId(),p.getId()+1,Integer.parseInt(quantity.getText().toString()));
+            appartenirService.updateQuantity(this,listProduit.getId(),produit.getId(),Integer.parseInt(quantity.getText().toString()));
         }
         Intent intent = new Intent(this, ListProduitActivity.class);
         Gson gson = new Gson();
