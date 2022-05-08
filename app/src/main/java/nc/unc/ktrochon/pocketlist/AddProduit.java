@@ -27,6 +27,7 @@ public class AddProduit extends AppCompatActivity{
     private Spinner category;
     private EditText description;
     private ImageButton save;
+    int numeroListe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class AddProduit extends AppCompatActivity{
         setContentView(R.layout.activity_add_produit);
         save = findViewById(R.id.save_produit);
         category = findViewById(R.id.spinnerCategory);
+        numeroListe = getIntent().getIntExtra("numeroDeLaListe",-1);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,6 +85,7 @@ public class AddProduit extends AppCompatActivity{
         ProduitServices produitServices = new ProduitServices();
         produitServices.addProduit(this,produit);
         Intent intent = new Intent(this,AddProduitToListActivity.class);
+        intent.putExtra("numeroDeLaList",numeroListe);
         startActivity(intent);
     }
 

@@ -55,6 +55,9 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
             public void onClick(View view) {
                 if(AddProduitToListActivity.this.adapter.isCheck()){
                     deleteProduct(adapter.getNomProduit());
+                    Intent intent = new Intent(AddProduitToListActivity.this,AddProduitToListActivity.class);
+                    intent.putExtra("numeroDeLaList",getIntent().getIntExtra("numeroDeLaList",-1));
+                    startActivity(intent);
                 }else{
                     Intent intent = new Intent(AddProduitToListActivity.this,AddProduit.class);
                     intent.putExtra("numeroDeLaListe",getIntent().getIntExtra("numeroDeLaList",-1));
