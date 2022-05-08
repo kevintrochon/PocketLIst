@@ -1,14 +1,18 @@
 package nc.unc.ktrochon.pocketlist;
 
+import androidx.activity.contextaware.OnContextAvailableListener;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +36,7 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
     private AddProduitAdapter adapter;
     private FloatingActionButton buttonAjoutList;
     private FloatingActionButton buttonAjoutProd;
+    private FloatingActionButton buttonSuppProd;
     private List<Produit> list;
     private List<Produit> produitList;
     private int numeroList;
@@ -54,19 +59,26 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
         buttonAjoutProd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(AddProduitToListActivity.this.adapter.isCheck()){
-                    deleteProduct(adapter.getNomProduit());
-                    Intent intent = new Intent(AddProduitToListActivity.this,AddProduitToListActivity.class);
-                    intent.putExtra("numeroDeLaList",getIntent().getIntExtra("numeroDeLaList",-1));
-                    startActivity(intent);
-                }else{
                     Intent intent = new Intent(AddProduitToListActivity.this,AddProduit.class);
                     intent.putExtra("numeroDeLaListe",getIntent().getIntExtra("numeroDeLaList",-1));
+                    startActivity(intent);
+            }
+        });
+        buttonAjoutProd.show();
+
+        buttonSuppProd = findViewById(R.id.delete_produit);
+
+        buttonSuppProd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (AddProduitToListActivity.this.adapter.isCheck()) {
+                    deleteProduct(adapter.getNomProduit());
+                    Intent intent = new Intent(AddProduitToListActivity.this, AddProduitToListActivity.class);
+                    intent.putExtra("numeroDeLaList", getIntent().getIntExtra("numeroDeLaList", -1));
                     startActivity(intent);
                 }
             }
         });
-        buttonAjoutProd.show();
 
         RecyclerView recyclerView = findViewById(R.id.add_produit_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
