@@ -18,14 +18,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:src="@drawable/ic_retour" />
+            android:src="@drawable/ic_retour"
+            app:backgroundTint="#424242" />
 
         <TextView
+            style="@style/NoteTitleFont"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="90dp"
             android:gravity="center"
-            android:text="Edition de la liste" />
+            android:text="Edition de la liste"
+            android:textColor="@color/white" />
     </androidx.appcompat.widget.Toolbar>
 
     <EditText

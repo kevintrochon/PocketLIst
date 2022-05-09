@@ -23,16 +23,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
+                app:backgroundTint="#424242"
                 android:src="@drawable/ic_retour" />
 
             <TextView
+                style="@style/NoteTitleFont"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="90dp"
                 android:gravity="center"
                 android:text="Liste de produits"
-                style="@style/NoteTitleFont"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white" />
 
         </androidx.appcompat.widget.Toolbar>
 
