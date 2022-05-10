@@ -36,6 +36,7 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
     private ListProduit listProduit;
     private List<CategoryProduit> category;
     List<Appartenir> appartenir;
+    int numeroListe;
 
 
     @Override
@@ -43,6 +44,7 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_produit);
         FloatingActionButton button = findViewById(R.id.create_list_prod);
+        numeroListe = getIntent().getIntExtra("numeroListe",-1);
         button.setOnClickListener(this);
         button.show();
         Gson gson = new Gson();
@@ -62,7 +64,7 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ListProduitActivity.this,MainActivity.class);
-                intent.putExtra("numeroDeLaList",listProduit.getId());
+                intent.putExtra("numeroDeLaList",numeroListe);
                 startActivity(intent);
             }
         });
@@ -74,7 +76,7 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
             showNoteDetail((int)view.getTag());
         else{
             Intent intent = new Intent(this, AddProduitToListActivity.class);
-            intent.putExtra("numeroDeLaList",listProduit.getId());
+            intent.putExtra("numeroListe",numeroListe);
             startActivity(intent);
         }
     }
@@ -82,8 +84,7 @@ public class ListProduitActivity extends AppCompatActivity implements View.OnCli
     public void showNoteDetail(int produitIndex){
         Produit produit = produits.get(produitIndex);
         Appartenir a = appartenir.get(produitIndex);
-        List<ListProduit> listProduits = listServices.getAllList(this);
-        ListProduit lp = listProduits.get(a.getKey_list()-1);
+        ListProduit lp = listServices.getListProduitByID(this,a.getKey_list());
         Intent intent = new Intent(this, DetailsProduitActivity.class);
         Gson json = new Gson();
         String myJSON = json.toJson(produit);

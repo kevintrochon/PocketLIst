@@ -34,7 +34,7 @@ public class ListDAO extends SQLiteOpenHelper {
 
         //Table Liste
         String strSql3 = "CREATE TABLE liste ("
-                +" key_liste INTEGER PRIMARY KEY AUTOINCREMENT, "
+                +" key_liste INTEGER PRIMARY KEY, "
                 +" nom VARCHAR(50) UNIQUE NOT NULL "
                 +")";
 
@@ -57,7 +57,7 @@ public class ListDAO extends SQLiteOpenHelper {
             Log.i("DATABASE", "Create Table Liste");
             db.execSQL(strSql4);
             Log.i("DATABASE", "Create Table Appartenir");
-            String queryLIste = "INSERT INTO liste (nom) VALUES('liste de test')";
+            String queryLIste = "INSERT INTO liste (key_liste,nom) VALUES(1,'liste de test')";
             db.execSQL(queryLIste);
             queryLIste = "INSERT INTO produit (nom,description,key_cat) VALUES" +
                     "('Pomme','Bon pour la santé',7), " +

@@ -52,7 +52,9 @@ public class ListRepository extends AppCompatActivity {
     }
 
     public void addListe(ListProduit listProduit) {
-        String query = "INSERT INTO liste (Nom) VALUES ('"
+        String query = "INSERT INTO liste (key_liste,Nom) VALUES ("
+                + listProduit.getId()
+                +",'"
                 + listProduit.getName().replace("'","''")
                 + "')";
 
@@ -105,5 +107,30 @@ public class ListRepository extends AppCompatActivity {
     }
 
 
+    @SuppressLint("Range")
+    public int getLastID() {
+        String query = "SELECT key_liste from liste ORDER BY key_liste DESC LIMIT 1 ";
+        int lastID = 0;
+        Cursor cursor = connexion.getReadableDatabase().rawQuery(query,null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            lastID = Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_liste")));
+            cursor.moveToNext();
+        }
+        return lastID;
+    }
 
+    @SuppressLint("Range")
+    public ListProduit getListesProduitByID(int id) {
+        String query = "SELECT * from liste WHERE key_liste = "+id;
+        ListProduit listProduit = new ListProduit();
+        Cursor cursor = connexion.getReadableDatabase().rawQuery(query,null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            listProduit.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("key_liste"))));
+            listProduit.setName(cursor.getString(cursor.getColumnIndex("nom")));
+            cursor.moveToNext();
+        }
+        return listProduit;
+    }
 }

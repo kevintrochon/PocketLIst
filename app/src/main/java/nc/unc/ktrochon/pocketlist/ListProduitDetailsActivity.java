@@ -32,7 +32,7 @@ public class ListProduitDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_produit_details);
         Gson gson = new Gson();
         listProduit = gson.fromJson(getIntent().getStringExtra("liste"), ListProduit.class);
-        index = getIntent().getIntExtra("listeIndex",-1);
+        index = services.getLastID(this);
         textView = findViewById(R.id.nameList);
         textView.setText(listProduit.getName());
         holdTitle = textView.getText().toString();
@@ -67,12 +67,14 @@ public class ListProduitDetailsActivity extends AppCompatActivity {
         ListProduit maListe = services.getListProduitByName(this,holdTitle);
         if (maListe.getName() == null){
             ListProduit listProduit = new ListProduit(editText.getText().toString());
+            listProduit.setId(index+1);
             services.setList(this,listProduit);
         }
         else {
             services.miseAJourListProduit(this,maListe,editText.getText().toString());
         }
         Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("numeroListe",listProduit.getId());
         startActivity(intent);
     }
 

@@ -52,7 +52,7 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
         buttonAjoutList.setOnClickListener(this);
         buttonAjoutList.show();
         buttonAjoutProd = findViewById(R.id.create_produit);
-        numeroList = getIntent().getIntExtra("numeroDeLaList",-1);
+        numeroList = getIntent().getIntExtra("numeroListe",-1);
         list = services.getAll(this);
         adapter = new AddProduitAdapter(list,this);
 
@@ -60,7 +60,7 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
             @Override
             public void onClick(View view) {
                     Intent intent = new Intent(AddProduitToListActivity.this,AddProduit.class);
-                    intent.putExtra("numeroDeLaListe",getIntent().getIntExtra("numeroDeLaList",-1));
+                    intent.putExtra("numeroDeLaListe",numeroList);
                     startActivity(intent);
             }
         });
@@ -74,7 +74,7 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
                 if (AddProduitToListActivity.this.adapter.isCheck()) {
                     deleteProduct(adapter.getNomProduit());
                     Intent intent = new Intent(AddProduitToListActivity.this, AddProduitToListActivity.class);
-                    intent.putExtra("numeroDeLaList", getIntent().getIntExtra("numeroDeLaList", -1));
+                    intent.putExtra("numeroDeLaList", numeroList);
                     startActivity(intent);
                 }
             }
@@ -90,7 +90,7 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
             public void onClick(View view) {
                 Intent intent = new Intent(AddProduitToListActivity.this,ListProduitActivity.class);
                 List<ListProduit> listProduitList =  listServices.getAllList(AddProduitToListActivity.this);
-                ListProduit listProduit = listProduitList.get(numeroList-1);
+                ListProduit listProduit = listProduitList.get(listProduitList.size()-1);
                 Gson gson = new Gson();
                 String malist = gson.toJson(listProduit);
                 intent.putExtra("listProduits",malist);
@@ -114,11 +114,11 @@ public class AddProduitToListActivity extends AppCompatActivity implements View.
             addAllProductsOnList(view,this.produitList,numeroList);
         }
         Intent intent = new Intent(this,ListProduitActivity.class);
-        List<ListProduit> listProduitList =  listServices.getAllList(this);
-        ListProduit listProduit = listProduitList.get(numeroList-1);
+        ListProduit listProduit = listServices.getListProduitByID(this,numeroList);
         Gson gson = new Gson();
         String malist = gson.toJson(listProduit);
         intent.putExtra("listProduits",malist);
+        intent.putExtra("numeroListe",numeroList);
         startActivity(intent);
     }
 

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ListProduitAdpter adapter;
     List<ListProduit> maListeProduit;
     private ListServices services = new ListServices();
+    private int numeroListe;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Gson json = new Gson();
         String myJSON = json.toJson(listProduit);
         intent.putExtra("liste",myJSON);
+        intent.putExtra("listProduitIndex",numeroListe);
         startActivity(intent);
     }
 
@@ -79,6 +81,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String myJSON = json.toJson(listProduit);
         intent.putExtra("listProduits",myJSON);
         intent.putExtra("listProduitIndex",maListeIndex);
+        numeroListe = listProduit.getId();
+        intent.putExtra("numeroListe",numeroListe);
         startActivity(intent);
     }
 

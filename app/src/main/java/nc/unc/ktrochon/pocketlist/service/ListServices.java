@@ -19,6 +19,12 @@ public class ListServices {
         return listProduit;
     }
 
+    public ListProduit getListProduitByID(Context context,int id){
+        repository = new ListRepository(context);
+        listProduit = repository.getListesProduitByID(id);
+        return listProduit;
+    }
+
     public List<ListProduit> getAllList(Context context){
         repository = new ListRepository(context);
         List<ListProduit> lists = repository.getAllListesProduit();
@@ -38,6 +44,11 @@ public class ListServices {
     public void miseAJourListProduit(Context context, ListProduit ListProduit,String title){
         repository = new ListRepository(context);
         repository.updateTitleList(listProduit,title);
+    }
+
+    public int getLastID(Context context){
+        repository = new ListRepository(context);
+        return repository.getLastID();
     }
 
 }
