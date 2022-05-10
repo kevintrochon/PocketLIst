@@ -50,6 +50,16 @@ public class ListProduitDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageButton deleteButton = findViewById(R.id.button_delete);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                supprimerListe(view);
+                Intent intent = new Intent(ListProduitDetailsActivity.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void sauvegarderListe(){
